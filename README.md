@@ -11,3 +11,5 @@ Boa parte do código está comentada!
 Gestor de proj | Participações | Andameno | Data limite
 --- | --- | --- | ---
 Elisson Vale | 0 | 45% | 10/08
+
+**Participe deste projeto** :grinning:
