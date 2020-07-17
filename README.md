@@ -7,6 +7,7 @@ Boa parte do código está comentada!
 - [ ] Colocar imagens e aprimorar a aparencia.
 - [ ] Hospedar em um dominio gratúito ou incluir em um projeto ja hospedado!
 
+**Andamento:**
 Gestor de proj | Participações | Andameno | Data limite
 --- | --- | --- | ---
 Elisson Vale | 0 | 45% | 10/08
