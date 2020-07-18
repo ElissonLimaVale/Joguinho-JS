@@ -13,3 +13,5 @@ Gestor de proj | Participações | Andameno | Data limite
 Elisson Vale | 0 | 45% | 10/08
 
 **Participe deste projeto** :grinning:
+
+### [Clique aqui](https://elissonlimavale.github.io/Joguinho-JS/jogo.html) para jogar.
