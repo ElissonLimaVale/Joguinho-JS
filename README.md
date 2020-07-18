@@ -5,7 +5,7 @@ Boa parte do código está comentada!
 
 - [x] Criar a base funcional **MVP**.
 - [ ] Colocar imagens e aprimorar a aparencia.
-- [ ] Hospedar em um dominio gratúito ou incluir em um projeto ja hospedado!
+- [ ] Integrar em um projeto já hospedado!
 
 **Andamento:**
 Gestor de proj | Participações | Andameno | Data limite
