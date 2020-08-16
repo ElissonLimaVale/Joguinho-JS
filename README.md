@@ -4,7 +4,7 @@ Joguinho consiste em não esbarrar nos obstaculos!
 Boa parte do código está comentada!
 
 - [x] Criar a base funcional **MVP**.
-- [ ] Incluir imagens e aprimorar a aparencia.
+- [ ] Incluir imagens e aprimorar a aparência.
 - [ ] Integrar a um projeto já hospedado!
 
 **Andamento:**
