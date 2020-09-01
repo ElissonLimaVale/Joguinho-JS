@@ -266,12 +266,26 @@ var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
         }
         main();// Inicializa o jogo
         // processamento do audio do jogo.
-        function reproduz(){
-            const audio = document.querySelector('audio');
+        function reproduz(){            
+            if(estadoAtual != estados.jogando){
+                var audio = document.getElementById('click02');
+            }else if(estadoAtual != estados.jogar || estadoAtual != estados.perdeu){
+                var audio = document.getElementById('click01');
+            }
+            var audio01 = document.getElementById('click03');
+            if(estadoAtual == estados.jogando){
+                audio01.play();
+            }else{
+                audio01.pause();
+            }
             audio.play();
-            }   
+        }   
         function pausar(){
-            const audio = querySelector('audio');
+            if(estadoAtual == estados.jogando){
+                var audio = document.getElementById('click01');
+            }else{
+                var audio = document.getElementById('click01');
+            }
             audio.pause();
         }
         function gameOver(){
