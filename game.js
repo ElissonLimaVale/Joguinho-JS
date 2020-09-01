@@ -286,6 +286,10 @@ var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
             document.getElementById("recordBody").style = "top: -600px;";
             estadoAtual = estados.jogar;
             obstaculos._obs = [];
+            for(i = 1; i <= 10; i++){
+                id = "r0" + i;
+                document.getElementById(id).style = "animation: none;";
+            }
         }
         function setRecord(recorde){
             for(i = 1; i <= 10; i++){
@@ -294,11 +298,13 @@ var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
             }
         }
         function eventRecord(){
-            document.getElementById("recordBody").style = "top: 20px;";
-            for(i = 1; i <= 10; i++){
-                console.log("solicitação: " + i);
-                id = "r0" + i;
-                var tempo = Math.floor(5 * Math.random() + 1);
-                document.getElementById(id).style = "animation: chuva " + tempo + "s linear;";
+            if(estadoAtual = estados.perdeu){
+                document.getElementById("recordBody").style = "top: 20px;";
+                for(i = 1; i <= 10; i++){
+                    id = "r0" + i;
+                    var tempo = Math.floor(5 * Math.random() + 1);
+                    document.getElementById(id).style = "animation: chuva " + tempo + "s linear;";
+                }
             }
+            
         }
