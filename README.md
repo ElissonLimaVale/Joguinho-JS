@@ -8,6 +8,7 @@ Boa parte do código está comentada!
 - [ ] Integrar a um projeto já hospedado!
 
 **Andamento:**
+
 Gestor de proj | Participações | Andameno | Data limite
 --- | --- | --- | ---
 Elisson Vale | 0 | 45% | 10/08
