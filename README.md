@@ -7,7 +7,7 @@ Boa parte do código está comentada!
 - [x] Criar a base funcional **MVP**.
 - [x] Incluir imagens e aprimorar a aparência.
 - [x] Integrar a um projeto já hospedado!
-
+- [x] Emplementar um relatório com dados do game
 **Andamento:**
 
 Gestor de proj | Participações | Andameno | Data limite | finalizado em | versão

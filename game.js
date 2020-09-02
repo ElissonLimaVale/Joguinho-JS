@@ -1,12 +1,28 @@
 var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 190,
-relatorio = {
-    partidas: 0,
-    novoRecord: 0,
-    maxPontos: 0,
-    somaPontos: 0,
-    media: 0
+estadoAtual, record = 0, hard = 190;
+if(localStorage.getItem("partidas") == null){
+    localStorage.setItem("partidas", 0);
+    localStorage.setItem("novoRecord", 0);
+    localStorage.setItem("maxPontos", 0);
+    localStorage.setItem("somaPontos", 0);
+    localStorage.setItem("media", 0);
+}
+var relatorio = {
+    open: 0,
+    partidas: parseInt(localStorage.getItem("partidas")),
+    novoRecord: parseInt(localStorage.getItem("novoRecord")),
+    maxPontos: parseInt(localStorage.getItem("maxPontos")),
+    somaPontos: parseInt(localStorage.getItem("somaPontos")),
+    media: parseInt(localStorage.getItem("media")),
+     
+    atualiza: function(){
+        this.partidas = parseInt(localStorage.getItem("partidas")),
+        this.novoRecord = parseInt(localStorage.getItem("novoRecord")),
+        this.maxPontos = parseInt(localStorage.getItem("maxPontos")),
+        this.somaPontos = parseInt(localStorage.getItem("somaPontos")),
+        this.media = parseInt(localStorage.getItem("media"))
+    }
 },
 estados = {
     jogar: 0,
@@ -90,6 +106,8 @@ obstaculos = {
                 break;
             case 25:
                 this.tempoInsere = 28;
+            default:
+                this.tempoInsere = 28;
         }
     },
     // a fução a tualizar o obstaculo se baseia em decrementar o eixo X do objeto para
@@ -165,18 +183,18 @@ obstaculos = {
     }
 };
 function Over(){
-    relatorio.partidas += 1;
+    localStorage.setItem("partidas", relatorio.partidas += 1);
     if(obstaculos.score > relatorio.maxPontos){
-        relatorio.maxPontos = obstaculos.score;
+        localStorage.setItem("maxPontos", obstaculos.score);
     }
-    relatorio.somaPontos += obstaculos.score;
-    relatorio.media = relatorio.somaPontos / relatorio.partidas;
+    localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
+    localStorage.setItem("media", relatorio.somaPontos / relatorio.partidas);
     velocidade = 0;
     user.velocidade = 0;// pausa o bloco do usuario
     user.gravidade = 0;
     estadoAtual = estados.perdeu;
     if(obstaculos.score > record){
-        relatorio.novoRecord += 1;
+        localStorage.setItem("novoRecord",relatorio.novoRecord += 1);
         setRecordMemory(obstaculos.score);
         record = getRecordMemory();
         setRecord(record);
@@ -184,6 +202,7 @@ function Over(){
     }else{
         gameOver();
     }
+    relatorio.atualiza();
 }
 if(getRecordMemory() != null){
     record = getRecordMemory();
@@ -192,9 +211,6 @@ if(getRecordMemory() != null){
 function pular(){// verifica a variavel estado e só executa a função pular se o estado estiver "estados.jogando"
     if(estadoAtual == estados.jogando){
         user.pula();
-    }
-    else if(estadoAtual == estados.jogar){// se o estado estiver como jogar muda o estado para jogando, oque
-        estadoAtual = estados.jogando     // faz o jogo inicia!
     }
 }
 function main(){
@@ -207,7 +223,7 @@ function main(){
         LARGURA = 800;
     }
     // criando a tela
-    canvas = document.createElement("canvas");
+    canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
     canvas.height = ALTURA;
     canvas.style.border = "5px solid rgb(0,0,0)";
@@ -219,8 +235,6 @@ function main(){
     obsImageCima.src="imagens/obsTodosCima.png";
 
     contex = canvas.getContext("2d");
-    //adicionando o objeto tela no body/corpo da pagina
-    document.body.appendChild(canvas);
 
     document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
 
@@ -288,6 +302,12 @@ function desenha(){
     }
     // O código abaixo desenha o bloco que o jogador vai controlar
     user.desenha();
+}
+function playGame(){
+    if(estadoAtual == estados.jogar){// se o estado estiver como jogar muda o estado para jogando, oque
+        estadoAtual = estados.jogando     // faz o jogo inicia!
+    }
+    document.getElementById("notific").style = "left: -80%;";
 }
 main();// Inicializa o jogo
 // processamento do audio do jogo.
