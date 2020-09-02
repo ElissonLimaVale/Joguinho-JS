@@ -9,7 +9,7 @@ body {
 }
 @font-face {
         font-family: game_over;
-        src: url('../joystix.ttf')
+        src: url('../fonts/joystix.ttf')
     }
 canvas {
     width: 70%;
