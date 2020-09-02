@@ -1,6 +1,13 @@
 var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
 estadoAtual, record = 0, hard = 190,
+relatorio = {
+    partidas: 0,
+    novoRecord: 0,
+    maxPontos: 0,
+    somaPontos: 0,
+    media: 0
+},
 estados = {
     jogar: 0,
     jogando: 1,
@@ -35,18 +42,7 @@ user = {
         if(this.y > chao.y - this.altura){
             this.y = chao.y - this.altura;
             this.velocidade = 0;
-            velocidade = 0;
-                user.velocidade = 0;// pausa o bloco do usuario
-                user.gravidade = 0;
-                estadoAtual = estados.perdeu;
-                if(obstaculos.score > record){
-                    setRecordMemory(obstaculos.score);
-                    record = getRecordMemory();
-                    setRecord(record);
-                    eventRecord();
-                }else{
-                    gameOver();
-                }
+            Over();
         }
     },
 
@@ -92,15 +88,8 @@ obstaculos = {
             case 15:
                 this.tempoInsere = 30;
                 break;
-            case 20:
-                this.tempoInsere = 28;
-                break;
             case 25:
-                this.tempoInsere = 26;
-                break;
-            case 30:
-                this.tempoInsere = 24;
-                break;
+                this.tempoInsere = 28;
         }
     },
     // a fução a tualizar o obstaculo se baseia em decrementar o eixo X do objeto para
@@ -121,33 +110,11 @@ obstaculos = {
             if(user.x + user.largura > obs.x && obs.x - obs.largura < user.x + user.largura &&
                 obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                velocidade = 0;
-                user.velocidade = 0;// pausa o bloco do usuario
-                user.gravidade = 0;
-                estadoAtual = estados.perdeu;
-                if(obstaculos.score > record){
-                    setRecordMemory(obstaculos.score);
-                    record = getRecordMemory();
-                    setRecord(record);
-                    eventRecord();
-                }else{
-                    gameOver();
-                }
+                Over();
             }else if(user.x + user.largura > obs2.x && user.x < obs2.x + obs2.largura &&
                 (user.y - user.altura) + 10 <= (chao.y - obs.altura) - hard){
                     // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                velocidade = 0;
-                user.velocidade = 0;// pausa o bloco do usuario
-                user.gravidade = 0;
-                estadoAtual = estados.perdeu;
-                if(obstaculos.score > record){
-                    setRecordMemory(obstaculos.score);
-                    record = getRecordMemory();
-                    setRecord(record);
-                    eventRecord();
-                }else{
-                    gameOver();
-                }
+                Over();
             }
             //verificando se o objeto ja passou da tela, para apagá-lo do arry, assim evitando
             // que ele continue decrementando e isso consuma processamento!
@@ -197,6 +164,27 @@ obstaculos = {
         }
     }
 };
+function Over(){
+    relatorio.partidas += 1;
+    if(obstaculos.score > relatorio.maxPontos){
+        relatorio.maxPontos = obstaculos.score;
+    }
+    relatorio.somaPontos += obstaculos.score;
+    relatorio.media = relatorio.somaPontos / relatorio.partidas;
+    velocidade = 0;
+    user.velocidade = 0;// pausa o bloco do usuario
+    user.gravidade = 0;
+    estadoAtual = estados.perdeu;
+    if(obstaculos.score > record){
+        relatorio.novoRecord += 1;
+        setRecordMemory(obstaculos.score);
+        record = getRecordMemory();
+        setRecord(record);
+        eventRecord();
+    }else{
+        gameOver();
+    }
+}
 if(getRecordMemory() != null){
     record = getRecordMemory();
 }
