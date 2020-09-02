@@ -33,11 +33,11 @@ function Sprite03(x, y, largura){
         contex.drawImage(obsImageCima,this.x,alt,this.largura,obsAltura,xCanvas, yCanvas,this.largura,obsAltura);
     }
 }
-obsImage005 = new Sprite03(0,250,50);
-obsImage004 = new Sprite03(50,250,50);
-obsImage003 = new Sprite03(100,250,50);
-obsImage002 = new Sprite03(150,250,50);
-obsImage001 = new Sprite03(200,250,50);
+obsImage005 = new Sprite03(0,270,50);
+obsImage004 = new Sprite03(50,270,50);
+obsImage003 = new Sprite03(100,270,50);
+obsImage002 = new Sprite03(150,270,50);
+obsImage001 = new Sprite03(200,270,50);
 function setRecordMemory(record){
     localStorage.setItem("RecordMax", record);
 }
