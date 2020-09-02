@@ -2,7 +2,7 @@
 ---
 Joguinho consiste em não esbarrar nos obstaculos!
 Boa parte do código está comentada!
-### [Clique aqui](https://elissonlimavale.github.io/Joguinho-JS/jogo.html) para jogar.
+### [Clique aqui](https://elissonlimavale.github.io/Joguinho-Bird-JS/jogo.html) para jogar.
 
 - [x] Criar a base funcional **MVP**.
 - [x] Incluir imagens e aprimorar a aparência.
