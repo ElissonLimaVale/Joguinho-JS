@@ -125,45 +125,54 @@ canvas {
     position: absolute;
     font-size: 100px;
     font-family: game_over;
-    color: rgb(0, 187, 31);
+    color: rgb(0, 211, 35);
     text-shadow: 2px 2px 5px rgb(0, 0, 0);
     list-style: none;
     margin: 5px;
-    border: 10px solid rgba(0, 255, 13, 0.644);
-    background-color: rgb(251, 79, 36);
+    border: 10px solid rgba(2, 93, 7, 0.897);
     padding: 2px;
     border-radius: 20px;
     bottom: -200px;
 }
 #r01 {
     left: 180px;
+    background-color: rgb(251, 79, 36);
 }
 #r02 {
     left: 380px;
+    background-color: rgb(36, 129, 251);
 }
 #r03 {
     left: 10px;
+    background-color: rgba(65, 58, 57, 0.644);
 }
 #r04 {
     left: 550px;
+    background-color: rgb(241, 129, 1);
 }
 #r05 {
     left: 700px;
+    background-color: rgb(150, 6, 233);
 }
 #r06 {
     left: 890px;
+    background-color: rgba(255, 0, 136, 0.712);
 }
 #r07 {
     left: 990px;
+    background-color: rgb(163, 130, 19);
 }
 #r08 {
     left: 1120px;
+    background-color: rgb(100, 58, 38);
 }
 #r09 {
     left: 290px;
+    background-color: rgb(29, 22, 61);
 }
 #r010 {
     left: 800px;
+    background-color: rgba(255, 0, 0, 0.678);
 }
 @keyframes chuva {
     0% {bottom: -200px; opacity: 100%;}
