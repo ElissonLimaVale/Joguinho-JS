@@ -1,14 +1,14 @@
 # Joguinho-JS
 ---
-Joguinho consiste em não esbarrar nos obstaculos!
-Boa parte do código está comentada!
+Joguinho consiste em não ser atingido pelos outros emojis.
 ### [Clique aqui](https://elissonlimavale.github.io/Joguinho-Bird-JS/jogo.html) para jogar.
 
 - [x] Criar a base funcional **MVP**.
 - [x] Incluir imagens e aprimorar a aparência.
-- [x] Integrar a um projeto já hospedado!
-- [x] Emplementar um relatório com dados do game
-**Andamento:**
+- [x] Integrar a um projeto já hospedado.
+- [x] Emplementar um relatório com dados do game.
+
+  **Andamento:**
 
 Gestor de proj | Participações | Andameno | Data limite | finalizado em | versão
 --- | --- | --- | --- | --- | ---
