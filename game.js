@@ -211,6 +211,7 @@ if(getRecordMemory() != null){
 function pular(){// verifica a variavel estado e só executa a função pular se o estado estiver "estados.jogando"
     if(estadoAtual == estados.jogando){
         user.pula();
+        reproduz();
     }
 }
 function main(){
