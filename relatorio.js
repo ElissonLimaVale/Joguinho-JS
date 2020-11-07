@@ -14,5 +14,8 @@ function openDados(){
         relatorio.open =0;
     }else if(relatorio.partidas <= 2 && estadoAtual == estados.jogar){
         document.getElementById("notific").style = "left: 0%;";
+        setTimeout(function(){
+            document.getElementById("notific").style = "left: -75%;";
+        }, 4000);
     }
 }
