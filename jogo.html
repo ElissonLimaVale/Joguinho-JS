@@ -2,10 +2,11 @@
     <head>
         <meta charset="utf-8"/>
         <title>Joguinho Bird</title>
-        <link rel="icon" href="/imagens/user.png" sizes="50x50">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <link id="icone-game" rel="icon" href="/imagens/user.png" sizes="50x50">
         <link rel="stylesheet" type="text/css" href="style/layout.css"/>
     </head>
-    <body onclick="reproduz();">
+    <body>
         <button id="relatorioOpen"onclick="openDados();"></button>
         <div id="relInit" class="relatorioDiv">
             <h1 id="relat01" class="h1relatorio"></h1>
@@ -28,11 +29,14 @@
         <div id="recordBody" class="newRecord">
             <h1>!Novo Record!</h1>
             <img class="record" src="imagens/newRecord.png" alt="">
-            <h2>I`M FUCK</h2>
+            <h2>THE BEST</h2>
             <button class="overButton" onclick="newGame();">Novo Jogo</button>
         </div>
         <h1 id="notific">você ainda não possui <br/>dados de jogo suficiente!<br/> Continui jogando..</h1>
-        <canvas onclick="playGame();openDados();"></canvas>
+        <canvas onclick="playLoad();"></canvas>
+        <div id="loaded">
+            <h2 id="contLoad">3</h2>
+        </div>
         <div>
                 <h3 id="r01" class="chuva">70</h3>
                 <h3 id="r02" class="chuva">70</h3>

@@ -235,3 +235,24 @@ canvas {
     color: rgb(162, 223, 238);
     text-shadow: 2px 2px 2px rgb(0,0,0,.8);
 }
+
+#loaded {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.26);
+    top: calc(50vh - 200px);
+    left: calc(50% - 100px);
+    justify-content: center;
+    transition: .5s;
+}
+#contLoad {
+    text-align: center;
+    font-family: game_over;
+    font-size: 140px;
+    color: rgb(22, 230, 39);
+    margin-top: 0;
+    text-shadow: 0px 0px 5px rgba(32, 32, 32, 0.897);
+    transition: .3s;
+}

@@ -1,12 +1,15 @@
+$(document).ready(function(){
+    document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
+    $("#loaded").hide();
+});
 var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 190;
+estadoAtual, record = 0, hard = 190, LoadNewGame = 4;
 if(localStorage.getItem("partidas") == null){
     localStorage.setItem("partidas", 0);
     localStorage.setItem("novoRecord", 0);
     localStorage.setItem("maxPontos", 0);
     localStorage.setItem("somaPontos", 0);
-    localStorage.setItem("media", 0);
 }
 var relatorio = {
     open: 0,
@@ -14,14 +17,12 @@ var relatorio = {
     novoRecord: parseInt(localStorage.getItem("novoRecord")),
     maxPontos: parseInt(localStorage.getItem("maxPontos")),
     somaPontos: parseInt(localStorage.getItem("somaPontos")),
-    media: parseInt(localStorage.getItem("media")),
      
     atualiza: function(){
         this.partidas = parseInt(localStorage.getItem("partidas")),
         this.novoRecord = parseInt(localStorage.getItem("novoRecord")),
         this.maxPontos = parseInt(localStorage.getItem("maxPontos")),
-        this.somaPontos = parseInt(localStorage.getItem("somaPontos")),
-        this.media = parseInt(localStorage.getItem("media"))
+        this.somaPontos = parseInt(localStorage.getItem("somaPontos"))
     }
 },
 estados = {
@@ -188,7 +189,6 @@ function Over(){
         localStorage.setItem("maxPontos", obstaculos.score);
     }
     localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
-    localStorage.setItem("media", relatorio.somaPontos / relatorio.partidas);
     velocidade = 0;
     user.velocidade = 0;// pausa o bloco do usuario
     user.gravidade = 0;
@@ -203,6 +203,7 @@ function Over(){
         gameOver();
     }
     relatorio.atualiza();
+    LoadNewGame = 4;
 }
 if(getRecordMemory() != null){
     record = getRecordMemory();
@@ -211,8 +212,8 @@ if(getRecordMemory() != null){
 function pular(){// verifica a variavel estado e só executa a função pular se o estado estiver "estados.jogando"
     if(estadoAtual == estados.jogando){
         user.pula();
-        reproduz();
     }
+    reproduz();
 }
 function main(){
     ALTURA = window.innerHeight; //captura a altura da tela do usuario
@@ -240,8 +241,8 @@ function main(){
     document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
 
     function verifica(){
-        var teste = window.event.keyCode; // Captura o codigo da tecla, usaremos a tecla espaço que é 32
-        if(teste == 32){  //verifica se foi clicado na tecla de espaço para "pular"
+        // Captura o codigo da tecla, usaremos a tecla espaço que é 32
+        if(window.event.keyCode == 32){  //verifica se foi clicado na tecla de espaço para "pular"
             pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
         }
     }
@@ -288,10 +289,10 @@ function desenha(){
     contex.font = "20px game_over";
     contex.fillText("RECORD: " + record, LARGURA - 200, 30);
 
-    if(estadoAtual == estados.jogar){
-    contex.fillStyle = "#00bc2f";
-    contex.font = "40px game_over";
-    contex.fillText("CLIQUE PARA INICIAR!", 90, (ALTURA / 2) - 20);
+    if(estadoAtual == estados.jogar && LoadNewGame == 4){
+        contex.fillStyle = "#00bc2f";
+        contex.font = "40px game_over";
+        contex.fillText("CLIQUE PARA INICIAR!", 90, (ALTURA / 2) - 20);
     }
     frames = 0;
             
@@ -312,7 +313,7 @@ function playGame(){
 }
 main();// Inicializa o jogo
 // processamento do audio do jogo.
-function reproduz(){            
+function reproduz(){       
     if(estadoAtual != estados.jogando){
         var audio = document.getElementById('click02');
     }else if(estadoAtual != estados.jogar || estadoAtual != estados.perdeu){
@@ -368,4 +369,25 @@ function eventRecord(){
         }
     }
             
+}
+function playLoad(){
+    if(estadoAtual == estados.jogar){
+        LoadNewGame--;
+        loaded();
+        if(LoadNewGame > -1){
+            setTimeout(function(){
+                playLoad();
+            }, 1000);
+        }
+    }
+}
+function loaded(){
+    if(LoadNewGame >= 0){
+        $("#loaded").show();
+        $("#contLoad").text(LoadNewGame);
+    }else{
+        $("#loaded").hide();
+        playGame();
+        openDados();
+    }
 }
