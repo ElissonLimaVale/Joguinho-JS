@@ -1,6 +1,6 @@
 # Joguinho-JS
 ---
-Joguinho consiste em não ser atingido pelos outros emojis.
+Joguinho consiste em desviar dos obstaculos clicando no botão esquerdo do mouse ou na tecla de espaço.
 ### [Clique aqui](https://elissonlimavale.github.io/Joguinho-Bird-JS/jogo.html) para jogar.
 
 - [x] Criar a base funcional **MVP**.
@@ -14,5 +14,5 @@ Gestor de proj | Participações | Andameno | Data limite | finalizado em | vers
 --- | --- | --- | --- | --- | ---
 Elisson Vale | 0 | 100% | 07/09/2020 | 01/07/2020 | 2.0
 
-**Contribua com esse projeto enviando um feed back!** :grinning:
+**Contribua com esse projeto enviando um feed back!** :grinning: 11988352221
 
