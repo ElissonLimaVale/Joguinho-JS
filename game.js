@@ -167,8 +167,8 @@ obstaculos = {
     },
     reset: function(){ // limpa os as variaveis para o valor padrão após o jogador perder, para que o jogo começe zerado de novo
         if(celular){
-            velocidade = 5;
-            velocidaDificuldade = 3;
+            velocidade = 4.5;
+            velocidaDificuldade = 3.5;
             user.gravidade = .46;
         }else{
             velocidade = 6;
@@ -227,7 +227,6 @@ function Over(){
         gameOver();
     }
     relatorio.atualiza();
-    LoadNewGame = 4;
 }
 if(getRecordMemory() != null){
     record = getRecordMemory();
@@ -239,13 +238,6 @@ function pular(){// verifica a variavel estado e só executa a função pular se
     }
     reproduz();
 }
-// $("#canvas").click(function(){
-//     if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-//         pular();// Chama o método pular quando é Clicado no canvas
-//     }else if(estadoAtual == estados.jogar){
-//         playLoad();
-//     }
-// });
 function main(){
     ALTURA = window.innerHeight; //captura a altura da tela do usuario
     LARGURA = window.innerWidth; //captura a argura da tela
@@ -268,7 +260,7 @@ function main(){
         document.addEventListener("click", function(){
             if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
                 pular();// Chama o método pular quando é Clicado no canvas
-            }else if(estadoAtual == estados.jogar){
+            }else if(estadoAtual == estados.jogar && obstaculos.score == 0){
                 playLoad();
             }
         });
@@ -297,14 +289,13 @@ function main(){
     contex = canvas.getContext("2d");
 
     //document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
-
     if(!celular){
-        window.addEventListener("keypress", function(){
+        document.onkeypress = function(){
             // Captura o codigo da tecla, usaremos a tecla espaço que é 32
             if(window.event.keyCode == 32){  //verifica se foi clicado na tecla de espaço para "pular"
                 pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
             }
-        });
+        };
     }
     estadoAtual = estados.jogar;// abrindo o play no jogo
     // chama a função rodar que vai atualizar e desenhar os objetos do jogo
@@ -341,12 +332,11 @@ function desenha(){
     contex.fillStyle = "#fff";
     if(celular){
         contex.font = "14px game_over";
-        contex.fillText("SCORE: " + obstaculos.score,20,20)
+        contex.fillText("SCORE: " + obstaculos.score,20,20);
     }else{
         contex.font = "20px game_over";
-        contex.fillText("SCORE: " + obstaculos.score,30,30)
+        contex.fillText("SCORE: " + obstaculos.score,30,30);
     }
-    ;
 
     //desenha texto e com o record
     contex.fillStyle = "#fff";
@@ -361,8 +351,8 @@ function desenha(){
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
         if(celular){
-            contex.font = "16px game_over";
-            contex.fillText("CLIQUE PARA INICIAR", 50, (ALTURA / 2) - 20);
+            contex.font = "18px game_over";
+            contex.fillText("CLIQUE PARA INICIAR", 52, (ALTURA / 2) - 20);
         }else{
             contex.font = "40px game_over";
             contex.fillText("CLIQUE PARA INICIAR", 180, (ALTURA / 2) - 20);
@@ -420,6 +410,7 @@ function newGame(){
     estadoAtual = estados.jogar;
     obstaculos._obs = [];
     obstaculos._obs2 = [];
+    LoadNewGame = 4;
 }
 
 function eventRecord(){
