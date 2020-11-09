@@ -115,18 +115,18 @@ obstaculos = {
         if(celular){
             switch(velocidaDificuldade){
                 case 5:
-                    this.tempoInsere = 140;
+                    this.tempoInsere = 150;
                     break;
                 case 10:
-                    this.tempoInsere = 110;
+                    this.tempoInsere = 115;
                     break;
                 case 15:
-                    this.tempoInsere = 90;
+                    this.tempoInsere = 95;
                     break;
                 case 25:
-                    this.tempoInsere = 86;
+                    this.tempoInsere = 90;
                 default:
-                    this.tempoInsere = 76;
+                    this.tempoInsere = 80;
             }
         }
     },
@@ -169,7 +169,7 @@ obstaculos = {
         if(celular){
             velocidade = 3;
             velocidaDificuldade = 3;
-            user.gravidade = .4;
+            user.gravidade = .46;
         }else{
             velocidade = 6;
             velocidaDificuldade = 5;
@@ -261,7 +261,7 @@ function main(){
         ALTURA = (ALTURA / 100) * 70;
         velocidade = 3;
         velocidaDificuldade = 3;
-        user.gravidade = .4;
+        user.gravidade = .46;
         celular = true;
     }
     if(celular){
