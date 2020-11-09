@@ -2,9 +2,8 @@ $(document).ready(function(){
     document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
     $("#loaded").hide();
     $("#relInit").hide();
-    $("#notific").hide();
 });
-var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
+var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0, celular = false,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
 estadoAtual, record = 0, hard = 190, LoadNewGame = 4;
 if(localStorage.getItem("partidas") == null){
@@ -113,6 +112,23 @@ obstaculos = {
             default:
                 this.tempoInsere = 28;
         }
+        if(celular){
+            switch(velocidaDificuldade){
+                case 5:
+                    this.tempoInsere = 140;
+                    break;
+                case 10:
+                    this.tempoInsere = 110;
+                    break;
+                case 15:
+                    this.tempoInsere = 90;
+                    break;
+                case 25:
+                    this.tempoInsere = 86;
+                default:
+                    this.tempoInsere = 76;
+            }
+        }
     },
     // a fução a tualizar o obstaculo se baseia em decrementar o eixo X do objeto para
     // movelo para esquereda;
@@ -150,11 +166,17 @@ obstaculos = {
         }
     },
     reset: function(){ // limpa os as variaveis para o valor padrão após o jogador perder, para que o jogo começe zerado de novo
-        velocidade = 6;
+        if(celular){
+            velocidade = 3;
+            velocidaDificuldade = 3;
+            user.gravidade = .4;
+        }else{
+            velocidade = 6;
+            velocidaDificuldade = 5;
+            user.gravidade = .5;
+        }
         frames = 0;
-        velocidaDificuldade = 5;
         tempoParada = 0;
-        user.gravidade = .5;
         this.score = 0;
         user.y = 80;
     },
@@ -236,24 +258,20 @@ function main(){
     LARGURA = window.innerWidth; //captura a argura da tela
     // adapta a tela para 500x600 caso a tela do usuario seja grande o suficiente
     // se não, vai apenas tomar o tamanho total da tela
-    
+    //alert(LARGURA + " X " + ALTURA); 
     if (LARGURA >= 1000 && ALTURA <= 800){
         LARGURA = (LARGURA / 100) * 80;
         ALTURA = (ALTURA / 100) * 80;
 
-        imageUser = new Image();
-        imageUser.src = "imagens/user.png";
-        obsImage = new Image();
-        obsImage.src="imagens/obsTodos.png";
-        obsImageCima = new Image();
-        obsImageCima.src="imagens/obsTodosCima.png";
     }else if(LARGURA <= 500 && ALTURA >= 500){
         LARGURA = (LARGURA / 100) * 95;
-        ALTURA = (ALTURA / 100) * 50;
-        velocidade = 2;
+        ALTURA = (ALTURA / 100) * 70;
+        velocidade = 3;
         velocidaDificuldade = 3;
-        user.gravidade = .3;
+        user.gravidade = .4;
+        celular = true;
     }
+    //alert(LARGURA + " X " + ALTURA + " Velocidade: " + velocidade); 
     // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
@@ -309,18 +327,34 @@ function desenha(){
 
     // desenhado o score na tela
     contex.fillStyle = "#fff";
-    contex.font = "20px game_over";
-    contex.fillText("SCORE: " + obstaculos.score,30,30);
+    if(celular){
+        contex.font = "14px game_over";
+        contex.fillText("SCORE: " + obstaculos.score,20,20)
+    }else{
+        contex.font = "20px game_over";
+        contex.fillText("SCORE: " + obstaculos.score,30,30)
+    }
+    ;
 
     //desenha texto e com o record
     contex.fillStyle = "#fff";
-    contex.font = "20px game_over";
-    contex.fillText("RECORD: " + record, LARGURA - 200, 30);
+    if(celular){
+        contex.font = "14px game_over";
+        contex.fillText("RECORD: " + record, LARGURA - 140, 20);
+    }else{
+        contex.font = "20px game_over";
+        contex.fillText("RECORD: " + record, LARGURA - 200, 30);
+    }
 
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
-        contex.font = "40px game_over";
-        contex.fillText("CLIQUE PARA INICIAR!", 180, (ALTURA / 2) - 20);
+        if(celular){
+            contex.font = "16px game_over";
+            contex.fillText("CLIQUE PARA INICIAR", 50, (ALTURA / 2) - 20);
+        }else{
+            contex.font = "40px game_over";
+            contex.fillText("CLIQUE PARA INICIAR", 180, (ALTURA / 2) - 20);
+        }
     }
     //O código abaixo desenha o chão
     chao.desenha();
@@ -336,7 +370,7 @@ function playGame(){
     if(estadoAtual == estados.jogar){// se o estado estiver como jogar muda o estado para jogando, oque
         estadoAtual = estados.jogando     // faz o jogo inicia!
     }
-    document.getElementById("notific").style = "left: -80%;";
+    document.getElementById("notific").style = "left: -100%;";
 }
 // processamento do audio do jogo.
 function reproduz(){       
@@ -363,7 +397,7 @@ function pausar(){
 }
 function gameOver(){
     if(estadoAtual == estados.perdeu){
-        document.getElementById("perdeu").style = "top: 50px;";
+        document.getElementById("perdeu").style = "top: 15vh;";
         document.getElementById("h1pontos").innerHTML = "score: "+ obstaculos.score;
         document.getElementById("h1record").innerHTML = "record: "+ record;
     }
@@ -378,7 +412,7 @@ function newGame(){
 
 function eventRecord(){
     if(estadoAtual = estados.perdeu){
-        document.getElementById("recordBody").style = "top: 20px;";
+        document.getElementById("recordBody").style = "top: 15vh;";
     }
 }
 function playLoad(){
