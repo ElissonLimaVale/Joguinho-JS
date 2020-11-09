@@ -256,23 +256,24 @@ function main(){
         user.gravidade = .46;
         celular = true;
     }
-    if(celular){
-        document.getElementById("click-cell").addEventListener("mousedown", function(){
-            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-                pular();// Chama o método pular quando é Clicado no canvas
-            }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-                playLoad();
-            }
-        });
-    }else{
-        document.getElementById("canvas").addEventListener("mousedown", function(){
-            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-                pular();// Chama o método pular quando é Clicado no canvas
-            }else if(estadoAtual == estados.jogar){
-                playLoad();
-            }
-        });
-    }
+    // if(celular){
+    //     function PularCell(){
+    //         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+    //             pular();// Chama o método pular quando é Clicado no canvas
+    //         }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+    //             playLoad();
+    //         }
+    //     }
+    // }else{
+    //     document.getElementById("canvas").addEventListener("mousedown", function(){
+    //         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+    //             pular();// Chama o método pular quando é Clicado no canvas
+    //         }else if(estadoAtual == estados.jogar){
+    //             playLoad();
+    //         }
+    //     });
+    // }
+    
     //alert(LARGURA + " X " + ALTURA + " Velocidade: " + velocidade); 
     // criando a tela
     canvas = document.querySelector("canvas");
@@ -300,6 +301,13 @@ function main(){
     estadoAtual = estados.jogar;// abrindo o play no jogo
     // chama a função rodar que vai atualizar e desenhar os objetos do jogo
     rodar();
+}
+function PularCell(){
+    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+        pular();// Chama o método pular quando é Clicado no canvas
+    }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+        playLoad();
+    }
 }
 function rodar(){
     atualiza();
