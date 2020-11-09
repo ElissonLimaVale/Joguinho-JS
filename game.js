@@ -257,10 +257,10 @@ function main(){
         celular = true;
     }
     if(celular){
-        document.addEventListener("click", function(){
+        document.getElementById("canvas").addEventListener("click", function(){
             if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
                 pular();// Chama o método pular quando é Clicado no canvas
-            }else if(estadoAtual == estados.jogar && obstaculos.score == 0){
+            }else if(estadoAtual == estados.jogar){
                 playLoad();
             }
         });
