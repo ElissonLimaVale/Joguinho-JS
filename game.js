@@ -167,7 +167,7 @@ obstaculos = {
     },
     reset: function(){ // limpa os as variaveis para o valor padrão após o jogador perder, para que o jogo começe zerado de novo
         if(celular){
-            velocidade = 3;
+            velocidade = 5;
             velocidaDificuldade = 3;
             user.gravidade = .46;
         }else{
@@ -259,13 +259,13 @@ function main(){
     }else if(LARGURA <= 500 && ALTURA >= 500){
         LARGURA = (LARGURA / 100) * 95;
         ALTURA = (ALTURA / 100) * 70;
-        velocidade = 3;
+        velocidade = 5;
         velocidaDificuldade = 3;
         user.gravidade = .46;
         celular = true;
     }
     if(celular){
-        document.addEventListener("mousedown", function(){
+        document.addEventListener("click", function(){
             if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
                 pular();// Chama o método pular quando é Clicado no canvas
             }else if(estadoAtual == estados.jogar){
@@ -296,15 +296,15 @@ function main(){
     obsImageCima.src="imagens/obsTodosCima.png";
     contex = canvas.getContext("2d");
 
-    document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
+    //document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
 
     if(!celular){
-        function verifica(){
+        window.addEventListener("keypress", function(){
             // Captura o codigo da tecla, usaremos a tecla espaço que é 32
             if(window.event.keyCode == 32){  //verifica se foi clicado na tecla de espaço para "pular"
                 pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
             }
-        }
+        });
     }
     estadoAtual = estados.jogar;// abrindo o play no jogo
     // chama a função rodar que vai atualizar e desenhar os objetos do jogo
