@@ -199,7 +199,7 @@ function pular(){
 }
 
 // INICIA O JOGO NA VERSÃO MOBILE-CELULAR
-function mainMobile(){
+function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 95;
     ALTURA = (ALTURA / 100) * 70;
@@ -214,28 +214,6 @@ function mainMobile(){
     canvas.height = ALTURA;
     canvas.style.border = "5px solid rgb(0,0,0)";
 
-    // DECLARA AS IMAGENS USADAS NO JOGO
-    imageUser = new Image();
-    imageUser.src = "imagens/user.png";
-    obsImage = new Image();
-    obsImage.src="imagens/obsTodos.png";
-    obsImageCima = new Image();
-    obsImageCima.src="imagens/obsTodosCima.png";
-    contex = canvas.getContext("2d");
-
-    estadoAtual = estados.jogar;
-    rodar();
-}
-
-function main(){
-    //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
-    LARGURA = (LARGURA / 100) * 80;
-    ALTURA = (ALTURA / 100) * 80;
-    // CRIA A TELA - CANVAS
-    canvas = document.querySelector("canvas");
-    canvas.width = LARGURA;
-    canvas.height = ALTURA;
-    canvas.style.border = "5px solid rgb(0,0,0)";
     // DECLARA AS IMAGENS USADAS NO JOGO
     imageUser = new Image();
     imageUser.src = "imagens/user.png";
@@ -377,4 +355,5 @@ function loaded(){
         openDados();
     }
 }
+
 main();
