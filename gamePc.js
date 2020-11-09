@@ -1,42 +1,20 @@
-$(document).ready(function(){
-    document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
-    $("#loaded").hide();
-    $("#relInit").hide();
-});
-var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0, celular = false,
+
+// VARIÁVEIS DE JOGO
+var canvas, contex, frames = 0,tempoParada = 0, celular = false,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 190, LoadNewGame = 4;
-if(localStorage.getItem("partidas") == null){
-    localStorage.setItem("partidas", 0);
-    localStorage.setItem("novoRecord", 0);
-    localStorage.setItem("maxPontos", 0);
-    localStorage.setItem("somaPontos", 0);
-}
-var relatorio = {
-    open: 0,
-    partidas: parseInt(localStorage.getItem("partidas")),
-    novoRecord: parseInt(localStorage.getItem("novoRecord")),
-    maxPontos: parseInt(localStorage.getItem("maxPontos")),
-    somaPontos: parseInt(localStorage.getItem("somaPontos")),
-     
-    atualiza: function(){
-        this.partidas = parseInt(localStorage.getItem("partidas")),
-        this.novoRecord = parseInt(localStorage.getItem("novoRecord")),
-        this.maxPontos = parseInt(localStorage.getItem("maxPontos")),
-        this.somaPontos = parseInt(localStorage.getItem("somaPontos"))
-    }
-},
-estados = {
+estadoAtual, record = 0, hard = 190, LoadNewGame = 4; 
+
+var estados = {
     jogar: 0,
     jogando: 1,
     perdeu: 2
 },
-// esse é um tipo de variavel que pode ter varios valores e pode também ter funções, como se fosse uma classe.
+// ESSE É UM TIPO DE VARIAVEL QUE PODE CONTER DIFERENTES VALORES MÉTODOS E ATRIBUTO, COMO SE FOSSE UMA CLASSE.
 chao = { 
     y: 0,
     altura: 50,
     cor: "rgb(56, 60, 61)",
-    // desenha a tela principal do jogo
+    // DESENHA TELA O CHÃO
     desenha: function(){
         this.y = ALTURA - 50;
         contex.fillStyle = this.cor;
@@ -82,7 +60,6 @@ obstaculos = {
     cores: ["1", "2", "3", "4", "5"],
     tempoInsere:  0,
     score: 0,
-
     // A função insere vai inserir no array "_obs" os atributos dos objetos que ja estão sendo desenhados
     //atravéz da função "desenha". Ao inserir os atributos no array, automaticamente eles serão renderizados
     insere: function(){
@@ -111,23 +88,6 @@ obstaculos = {
                 this.tempoInsere = 28;
             default:
                 this.tempoInsere = 28;
-        }
-        if(celular){
-            switch(velocidaDificuldade){
-                case 5:
-                    this.tempoInsere = 150;
-                    break;
-                case 10:
-                    this.tempoInsere = 115;
-                    break;
-                case 15:
-                    this.tempoInsere = 95;
-                    break;
-                case 25:
-                    this.tempoInsere = 90;
-                default:
-                    this.tempoInsere = 80;
-            }
         }
     },
     // a fução a tualizar o obstaculo se baseia em decrementar o eixo X do objeto para
@@ -165,23 +125,18 @@ obstaculos = {
             }
         }
     },
-    reset: function(){ // limpa os as variaveis para o valor padrão após o jogador perder, para que o jogo começe zerado de novo
-        if(celular){
-            velocidade = 4.5;
-            velocidaDificuldade = 3.5;
-            user.gravidade = .46;
-        }else{
-            velocidade = 6;
-            velocidaDificuldade = 5;
-            user.gravidade = .5;
-        }
+    // ZERA OS VALORES DE JOGO PARA REINICIAR OS OBSTACULOS
+    reset: function(){
+        velocidade = 6;
+        velocidaDificuldade = 5;
+        user.gravidade = .5;
         frames = 0;
         tempoParada = 0;
         this.score = 0;
         user.y = 80;
     },
-            // o método desenha do obstáculo está sempre em execução junto com o metodo atualiza
-            // para que assim que o objeto for adicionado no array ele aparêça na tela.
+
+    // MÉTODO QUE RENDERIZA OS OBSTACULOS
     desenha: function(){
         for(var i = 0, tam = this._obs.length; i < tam; i++){
             var obs = this._obs[i];
@@ -208,16 +163,13 @@ obstaculos = {
         }
     }
 };
+
+// REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
     localStorage.setItem("partidas", relatorio.partidas += 1);
     if(obstaculos.score > relatorio.maxPontos){
         localStorage.setItem("maxPontos", obstaculos.score);
     }
-    localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
-    velocidade = 0;
-    user.velocidade = 0;// pausa o bloco do usuario
-    user.gravidade = 0;
-    estadoAtual = estados.perdeu;
     if(obstaculos.score > record){
         localStorage.setItem("novoRecord",relatorio.novoRecord += 1);
         setRecordMemory(obstaculos.score);
@@ -226,61 +178,34 @@ function Over(){
     }else{
         gameOver();
     }
+    localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
     relatorio.atualiza();
+    velocidade = 0;
+    user.velocidade = 0;// pausa o bloco do usuario
+    user.gravidade = 0;
+    estadoAtual = estados.perdeu;
 }
 if(getRecordMemory() != null){
     record = getRecordMemory();
 }
-//funçã pular
-function pular(){// verifica a variavel estado e só executa a função pular se o estado estiver "estados.jogando"
+// VERIFICA SE O JOGO ESTA EM ANDAMENTO PARA EXECUTAR A FUNÇÃO PULAR
+function pular(){
     if(estadoAtual == estados.jogando){
         user.pula();
     }
     reproduz();
 }
-function main(){
-    ALTURA = window.innerHeight; //captura a altura da tela do usuario
-    LARGURA = window.innerWidth; //captura a argura da tela
-    // adapta a tela para 500x600 caso a tela do usuario seja grande o suficiente
-    // se não, vai apenas tomar o tamanho total da tela
-    //alert(LARGURA + " X " + ALTURA); 
-    if (LARGURA >= 1000 && ALTURA <= 800){
-        LARGURA = (LARGURA / 100) * 80;
-        ALTURA = (ALTURA / 100) * 80;
 
-    }else if(LARGURA <= 500 && ALTURA >= 500){
-        LARGURA = (LARGURA / 100) * 95;
-        ALTURA = (ALTURA / 100) * 70;
-        velocidade = 5;
-        velocidaDificuldade = 3;
-        user.gravidade = .46;
-        celular = true;
-    }
-    // if(celular){
-    //     function PularCell(){
-    //         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-    //             pular();// Chama o método pular quando é Clicado no canvas
-    //         }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-    //             playLoad();
-    //         }
-    //     }
-    // }else{
-    //     document.getElementById("canvas").addEventListener("mousedown", function(){
-    //         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-    //             pular();// Chama o método pular quando é Clicado no canvas
-    //         }else if(estadoAtual == estados.jogar){
-    //             playLoad();
-    //         }
-    //     });
-    // }
-    
-    //alert(LARGURA + " X " + ALTURA + " Velocidade: " + velocidade); 
-    // criando a tela
+function main(){
+    //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
+    LARGURA = (LARGURA / 100) * 80;
+    ALTURA = (ALTURA / 100) * 80;
+    // CRIA A TELA - CANVAS
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
     canvas.height = ALTURA;
     canvas.style.border = "5px solid rgb(0,0,0)";
-
+    // DECLARA AS IMAGENS USADAS NO JOGO
     imageUser = new Image();
     imageUser.src = "imagens/user.png";
     obsImage = new Image();
@@ -289,34 +214,23 @@ function main(){
     obsImageCima.src="imagens/obsTodosCima.png";
     contex = canvas.getContext("2d");
 
-    //document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
-    if(!celular){
-        document.onkeypress = function(){
-            // Captura o codigo da tecla, usaremos a tecla espaço que é 32
-            if(window.event.keyCode == 32){  //verifica se foi clicado na tecla de espaço para "pular"
-                pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
-            }
-        };
-    }
-    estadoAtual = estados.jogar;// abrindo o play no jogo
-    // chama a função rodar que vai atualizar e desenhar os objetos do jogo
+    // CAPTURA TECLAS DIGITADAS E SE A TECLA FOR ESPAÇO EXECUTA A FUNÇÃO PULAR
+    document.onkeypress = function(){
+        if(window.event.keyCode == 32){
+            pular();
+        }
+    };
+
+    estadoAtual = estados.jogar;
     rodar();
 }
-function PularCell(){
-    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-        pular();// Chama o método pular quando é Clicado no canvas
-    }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-        playLoad();
-    }
-}
 function rodar(){
-    atualiza();
-    desenha();
-    window.requestAnimationFrame(rodar); // Criando um loop infinito que vai ficar executando a função rodar infinitamente.
+atualiza();
+desenha();
+window.requestAnimationFrame(rodar); // Criando um loop infinito que vai ficar executando a função rodar infinitamente.
 }
 function atualiza(){
-    if(estadoAtual == estados.jogando){// inicia o jogo se o estadoAtual estiver com "jogando"
-
+    if(estadoAtual == estados.jogando){
         //chamando o calculo que decrementa os obstaculos no eixo X fazendo com que eles
         //se movam para a esquerda, variando a velocidade atravéz da decrementação.
         obstaculos.atualiza();
@@ -338,34 +252,20 @@ function desenha(){
 
     // desenhado o score na tela
     contex.fillStyle = "#fff";
-    if(celular){
-        contex.font = "14px game_over";
-        contex.fillText("SCORE: " + obstaculos.score,20,20);
-    }else{
-        contex.font = "20px game_over";
-        contex.fillText("SCORE: " + obstaculos.score,30,30);
-    }
+    contex.font = "20px game_over";
+    contex.fillText("SCORE: " + obstaculos.score,30,30);
 
     //desenha texto e com o record
     contex.fillStyle = "#fff";
-    if(celular){
-        contex.font = "14px game_over";
-        contex.fillText("RECORD: " + record, LARGURA - 140, 20);
-    }else{
-        contex.font = "20px game_over";
-        contex.fillText("RECORD: " + record, LARGURA - 200, 30);
-    }
+    contex.font = "20px game_over";
+    contex.fillText("RECORD: " + record, LARGURA - 200, 30);
 
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
-        if(celular){
-            contex.font = "18px game_over";
-            contex.fillText("CLIQUE PARA INICIAR", 52, (ALTURA / 2) - 20);
-        }else{
-            contex.font = "40px game_over";
-            contex.fillText("CLIQUE PARA INICIAR", 180, (ALTURA / 2) - 20);
-        }
+        contex.font = "40px game_over";
+        contex.fillText("CLIQUE PARA INICIAR", 180, (ALTURA / 2) - 20);
     }
+    
     //O código abaixo desenha o chão
     chao.desenha();
 
@@ -447,6 +347,4 @@ function loaded(){
         openDados();
     }
 }
-$(document).ready(function(){
-    main();// Inicializa o jogo
-});
+main();
