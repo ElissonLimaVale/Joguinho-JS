@@ -250,6 +250,9 @@ function main(){
     }else if(LARGURA <= 500 && ALTURA >= 500){
         LARGURA = (LARGURA / 100) * 95;
         ALTURA = (ALTURA / 100) * 50;
+        velocidade = 2;
+        velocidaDificuldade = 3;
+        user.gravidade = .3;
     }
     // criando a tela
     canvas = document.querySelector("canvas");
