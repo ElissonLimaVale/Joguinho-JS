@@ -13,13 +13,15 @@ function openDados(){
     }else if(relatorio.open == 1 || estadoAtual == estados.jogando){
         document.getElementById("relInit").style = "right: -80%;";
         $("#relInit").hide(300);
-        relatorio.open =0;
+        relatorio.open = 0;
     }else if(relatorio.partidas <= 2 && estadoAtual == estados.jogar){
         $("#notific").show(300);
         document.getElementById("notific").style = "left: 0%;";
+        relatorio.open = 1;
         setTimeout(function(){
             document.getElementById("notific").style = "left: -100%;";
             $("#notific").hide(400);
+            relatorio.open = 0;
         }, 4000);
     }
 }

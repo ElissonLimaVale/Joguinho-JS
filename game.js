@@ -260,7 +260,7 @@ function main(){
         document.getElementById("click-cell").addEventListener("mousedown", function(){
             if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
                 pular();// Chama o método pular quando é Clicado no canvas
-            }else if(estadoAtual == estados.jogar){
+            }else if(estadoAtual == estados.jogar && relatorio.open != 1){
                 playLoad();
             }
         });
