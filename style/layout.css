@@ -232,15 +232,16 @@
         }
     canvas {
         margin-top: 5vh;
+       
         border-radius: 25px;
         padding: 0px;
     }
     .over{
-        width: 50%;
-        height: 400px;
+        width: 80%;
+        height: 500px;
         background-color: rgba(39, 100, 15, 0.932);
         position: absolute;
-        margin: 0px 25% 0px 25%;
+        margin: 0px 10% 0px 10%;
         padding: 0px;
         border-radius: 20px;
         transition: 1s;

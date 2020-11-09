@@ -247,8 +247,8 @@ function main(){
         obsImage.src="imagens/obsTodos.png";
         obsImageCima = new Image();
         obsImageCima.src="imagens/obsTodosCima.png";
-    }else if(LARGURA >= 1300 && ALTURA >= 1400){
-        LARGURA = (LARGURA / 100) * 90;
+    }else if(LARGURA <= 500 && ALTURA >= 500){
+        LARGURA = (LARGURA / 100) * 95;
         ALTURA = (ALTURA / 100) * 70;
 
         imageUser = new Image();
