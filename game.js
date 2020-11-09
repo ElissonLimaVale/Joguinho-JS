@@ -246,13 +246,6 @@ function pular(){// verifica a variavel estado e só executa a função pular se
 //         playLoad();
 //     }
 // });
-document.getElementById("canvas").addEventListener("mousedown", function(){
-    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-        pular();// Chama o método pular quando é Clicado no canvas
-    }else if(estadoAtual == estados.jogar){
-        playLoad();
-    }
-});
 function main(){
     ALTURA = window.innerHeight; //captura a altura da tela do usuario
     LARGURA = window.innerWidth; //captura a argura da tela
@@ -271,6 +264,23 @@ function main(){
         user.gravidade = .4;
         celular = true;
     }
+    if(celular){
+        document.addEventListener("mousedown", function(){
+            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+                pular();// Chama o método pular quando é Clicado no canvas
+            }else if(estadoAtual == estados.jogar){
+                playLoad();
+            }
+        });
+    }else{
+        document.getElementById("canvas").addEventListener("mousedown", function(){
+            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+                pular();// Chama o método pular quando é Clicado no canvas
+            }else if(estadoAtual == estados.jogar){
+                playLoad();
+            }
+        });
+    }
     //alert(LARGURA + " X " + ALTURA + " Velocidade: " + velocidade); 
     // criando a tela
     canvas = document.querySelector("canvas");
@@ -288,10 +298,12 @@ function main(){
 
     document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
 
-    function verifica(){
-        // Captura o codigo da tecla, usaremos a tecla espaço que é 32
-        if(window.event.keyCode == 32){  //verifica se foi clicado na tecla de espaço para "pular"
-            pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
+    if(!celular){
+        function verifica(){
+            // Captura o codigo da tecla, usaremos a tecla espaço que é 32
+            if(window.event.keyCode == 32){  //verifica se foi clicado na tecla de espaço para "pular"
+                pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
+            }
         }
     }
     estadoAtual = estados.jogar;// abrindo o play no jogo
