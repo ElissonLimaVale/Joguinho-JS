@@ -231,7 +231,7 @@
             src: url('../fonts/joystix.ttf');
         }
     canvas {
-        margin-top: 14vh;
+        margin-top: 10vh;
         width: 95%;
         height: 60vh;
         border-radius: 25px;
@@ -359,10 +359,10 @@
     }
     #relatorioOpen {
         position: absolute;
-        top: 5px;
+        top: 10px;
         left: 10px;
-        width: 50px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         border-radius: 10px;
         border: none;
         background: url('../imagens/formulario.png');
