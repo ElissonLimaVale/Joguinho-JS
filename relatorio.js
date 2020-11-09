@@ -1,5 +1,5 @@
 function openDados(){
-    if(estadoAtual == estados.jogar && relatorio.open == 0 && relatorio.partidas > 2){
+    if(estadoAtual == estados.jogar && relatorio.open == 0 && relatorio.partidas > 5){
         let Media = relatorio.somaPontos / relatorio.partidas;
         document.getElementById("relat01").innerHTML = "Seu Relatorio!";
         document.getElementById("relat02").innerHTML = "Partidas jogadas: " + relatorio.partidas;
