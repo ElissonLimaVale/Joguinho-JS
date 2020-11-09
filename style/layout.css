@@ -232,7 +232,8 @@
         }
     canvas {
         margin-top: 5vh;
-       
+        width: 90%;
+        height: 60vh;
         border-radius: 25px;
         padding: 0px;
     }

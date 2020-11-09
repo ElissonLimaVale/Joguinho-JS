@@ -236,7 +236,7 @@ function main(){
     LARGURA = window.innerWidth; //captura a argura da tela
     // adapta a tela para 500x600 caso a tela do usuario seja grande o suficiente
     // se não, vai apenas tomar o tamanho total da tela
-    alert( LARGURA + " x " + ALTURA);
+    
     if (LARGURA >= 1000 && ALTURA <= 800){
         LARGURA = (LARGURA / 100) * 80;
         ALTURA = (ALTURA / 100) * 80;
@@ -249,22 +249,20 @@ function main(){
         obsImageCima.src="imagens/obsTodosCima.png";
     }else if(LARGURA <= 500 && ALTURA >= 500){
         LARGURA = (LARGURA / 100) * 95;
-        ALTURA = (ALTURA / 100) * 70;
-
-        imageUser = new Image();
-        imageUser.src = "imagens/user.png";
-        obsImage = new Image();
-        obsImage.src="imagens/obsTodos.png";
-        obsImageCima = new Image();
-        obsImageCima.src="imagens/obsTodosCima.png";
+        ALTURA = (ALTURA / 100) * 50;
     }
-    alert( LARGURA + " x " + ALTURA);
     // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
     canvas.height = ALTURA;
     canvas.style.border = "5px solid rgb(0,0,0)";
 
+    imageUser = new Image();
+    imageUser.src = "imagens/user.png";
+    obsImage = new Image();
+    obsImage.src="imagens/obsTodos.png";
+    obsImageCima = new Image();
+    obsImageCima.src="imagens/obsTodosCima.png";
     contex = canvas.getContext("2d");
 
     document.onkeypress = verifica;// captura se alguma tecla foi digitada, se sim chama a função verifica
@@ -337,7 +335,6 @@ function playGame(){
     }
     document.getElementById("notific").style = "left: -80%;";
 }
-main();// Inicializa o jogo
 // processamento do audio do jogo.
 function reproduz(){       
     if(estadoAtual != estados.jogando){
@@ -402,3 +399,6 @@ function loaded(){
         openDados();
     }
 }
+$(document).ready(function(){
+    main();// Inicializa o jogo
+});
