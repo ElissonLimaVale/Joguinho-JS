@@ -1,4 +1,420 @@
-body {
+@media screen and (min-width: 1000px){
+    body {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        background-image:
+        linear-gradient(
+            to right,
+            rgba(224, 175, 105, 0.8),
+            rgb(143, 217, 236)
+        );
+        margin: 0px;
+        padding: 0px;
+    }
+    @font-face {
+            font-family: game_over;
+            src: url('../fonts/joystix.ttf');
+        }
+    canvas {
+        margin-top: 5vh;
+        border-radius: 25px;
+        padding: 0px;
+    }
+    .over{
+        width: 50%;
+        height: 400px;
+        background-color: rgba(39, 100, 15, 0.932);
+        position: absolute;
+        margin: 0px 25% 0px 25%;
+        padding: 0px;
+        border-radius: 20px;
+        transition: 1s;
+        top: -600px;
+    }
+    .gameover{
+        width: 90%;
+        margin: 10px 5% 0px 5%;
+    }
+    .morto{
+        position: absolute;
+        width: 28%;
+        height: 180px;
+    }
+    .relatorio h1{
+        font-size: 50px;
+        font-family: game_over;
+        color: rgba(255, 44, 44, 0.952);
+        text-transform: uppercase;
+        text-shadow: 2px 2px 2px rgb(0,0,0);
+        margin: 0px;
+    }
+    .overButton {
+        font-size: 30px;
+        font-family: game_over;
+        width: 50%;
+        margin: 25px 25% 0px 25%;
+        background-color: rgb(254, 150, 3);
+        border: none;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.829);
+        border-radius: 30px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.568);
+        padding: 10px;
+        color:rgba(255, 255, 255, 0.932);
+        float: bottom;
+    }
+    .newRecord{
+        width: 65%;
+        height: 450px;
+        background-color: rgba(37, 122, 3, 0.89);
+        position: absolute;
+        margin: 0px 17% 0px 17%;
+        padding: 0px;
+        border-radius: 30px;
+        transition: 1s;
+        top: -600px;
+
+    }
+    .newRecord h1 {
+        text-align: center;
+        font-size: 60px;
+        font-family: game_over;
+        color: rgb(31, 129, 153);
+        animation: record 2s infinite;
+        margin: 20px;
+        background-image: 
+        linear-gradient(
+            to right,
+            rgba(30, 253, 0, 0.815),
+            rgba(255, 255, 255, 0.918)
+        );
+        border-radius: 40px;
+        padding: 20px;
+    }
+    @keyframes record{
+        0%{color:rgb(27, 106, 126);opacity: 100%;}
+        25%{color:rgb(39, 131, 16);opacity: 100%;}
+        50%{color:rgb(192, 48, 35);opacity: 100%;}
+        75%{color:rgb(25, 36, 136);opacity: 100%;}
+        100%{color:rgb(28, 131, 156);opacity: 100%;}
+    }
+    .record {
+        width: 220px;
+        height: 220px;
+        position: absolute;
+        margin-left: 20px;
+    }
+    .relatorio {
+        float: right;
+        width: 70%;
+        margin: 0px 0px 0px 10px;
+        padding: 5px;
+        border-radius: 20px;
+        margin-top: 30px;
+    }
+    .newRecord h2{
+        width: 60%;
+        text-align: center;
+        font-size: 70px;
+        font-family: game_over;
+        color: rgba(0, 0, 0, 0.808);
+        margin: 10px 20% 10px 20%;
+        padding: 20px;
+        border: 10px solid rgba(0, 0, 0, 0.829);
+        border-radius: 50px;
+        background-color: rgb(254, 24, 3);
+    }
+    
+    .relatorioDiv {
+        position: absolute;
+        background-image:
+        linear-gradient(
+            to right,
+            rgba(0, 133, 167, 0.918),
+            rgba(255, 115, 1, 0.822)
+        );
+        width: 75%;
+        height: 100vh;
+        margin: 0px;
+        top: 0px;
+        right: -850px;
+        border-radius: 20px;
+        transition: 1.2s;
+    }
+    #relatorioOpen {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 80px;
+        height: 100px;
+        border-radius: 10px;
+        border: none;
+        background: url('../imagens/formulario.png');
+        background-size: 100%;
+        background-position: 80%;
+    }
+    #notific {
+        position: absolute;
+        font-size: 30px;
+        font-family: game_over;
+        color: rgba(0, 0, 0, 0.89);
+        background-color: rgba(255, 0, 0, 0.767);
+        border: 5px solid rgba(0, 0, 0, 0.644);
+        border-radius: 20px;
+        padding: 10px;
+        bottom: 0px;
+        left: -80%;
+        transition: 1s;
+    }
+    .h1relatorio {
+        font-size: 35px;
+        font-family: game_over;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.459);
+        width: 80%;
+        height: 12%;
+        border-radius: 20px;
+        padding: 5px 20px 5px 20px;
+        margin: 10px 10% 10px 10%;
+        color: rgb(162, 223, 238);
+        text-shadow: 2px 2px 2px rgb(0,0,0,.8);
+    }
+
+    #loaded {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        top: calc(50vh - 200px);
+        left: calc(50% - 100px);
+        justify-content: center;
+        transition: .5s;
+    }
+    #contLoad {
+        text-align: center;
+        font-family: game_over;
+        font-size: 140px;
+        color: rgb(22, 230, 39);
+        margin-top: 0;
+        text-shadow: 0px 0px 3px rgba(32, 32, 32, 0.897);
+        transition: .3s;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*#################### FORMATA O LAYOUT PARA CELULAR ######################*/
+
+@media screen and (max-width: 1000px) and (orientation: portrait){
+    body {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        background-image:
+        linear-gradient(
+            to right,
+            rgba(224, 175, 105, 0.8),
+            rgb(143, 217, 236)
+        );
+        margin: 0px;
+        padding: 0px;
+    }
+    @font-face {
+            font-family: game_over;
+            src: url('../fonts/joystix.ttf');
+        }
+    canvas {
+        margin-top: 5vh;
+        border-radius: 25px;
+        padding: 0px;
+    }
+    .over{
+        width: 50%;
+        height: 400px;
+        background-color: rgba(39, 100, 15, 0.932);
+        position: absolute;
+        margin: 0px 25% 0px 25%;
+        padding: 0px;
+        border-radius: 20px;
+        transition: 1s;
+        top: -600px;
+    }
+    .gameover{
+        width: 90%;
+        margin: 10px 5% 0px 5%;
+    }
+    .morto{
+        position: absolute;
+        width: 28%;
+        height: 180px;
+    }
+    .relatorio h1{
+        font-size: 50px;
+        font-family: game_over;
+        color: rgba(255, 44, 44, 0.952);
+        text-transform: uppercase;
+        text-shadow: 2px 2px 2px rgb(0,0,0);
+        margin: 0px;
+    }
+    .overButton {
+        font-size: 30px;
+        font-family: game_over;
+        width: 50%;
+        margin: 25px 25% 0px 25%;
+        background-color: rgb(254, 150, 3);
+        border: none;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.829);
+        border-radius: 30px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.568);
+        padding: 10px;
+        color:rgba(255, 255, 255, 0.932);
+        float: bottom;
+    }
+    .newRecord{
+        width: 65%;
+        height: 450px;
+        background-color: rgba(37, 122, 3, 0.89);
+        position: absolute;
+        margin: 0px 17% 0px 17%;
+        padding: 0px;
+        border-radius: 30px;
+        transition: 1s;
+        top: -600px;
+
+    }
+    .newRecord h1 {
+        text-align: center;
+        font-size: 60px;
+        font-family: game_over;
+        color: rgb(31, 129, 153);
+        animation: record 2s infinite;
+        margin: 20px;
+        background-image: 
+        linear-gradient(
+            to right,
+            rgba(30, 253, 0, 0.815),
+            rgba(255, 255, 255, 0.918)
+        );
+        border-radius: 40px;
+        padding: 20px;
+    }
+    @keyframes record{
+        0%{color:rgb(27, 106, 126);opacity: 100%;}
+        25%{color:rgb(39, 131, 16);opacity: 100%;}
+        50%{color:rgb(192, 48, 35);opacity: 100%;}
+        75%{color:rgb(25, 36, 136);opacity: 100%;}
+        100%{color:rgb(28, 131, 156);opacity: 100%;}
+    }
+    .record {
+        width: 220px;
+        height: 220px;
+        position: absolute;
+        margin-left: 20px;
+    }
+    .relatorio {
+        float: right;
+        width: 70%;
+        margin: 0px 0px 0px 10px;
+        padding: 5px;
+        border-radius: 20px;
+        margin-top: 30px;
+    }
+    .newRecord h2{
+        width: 60%;
+        text-align: center;
+        font-size: 70px;
+        font-family: game_over;
+        color: rgba(0, 0, 0, 0.808);
+        margin: 10px 20% 10px 20%;
+        padding: 20px;
+        border: 10px solid rgba(0, 0, 0, 0.829);
+        border-radius: 50px;
+        background-color: rgb(254, 24, 3);
+    }
+    
+    .relatorioDiv {
+        position: absolute;
+        background-image:
+        linear-gradient(
+            to right,
+            rgba(0, 133, 167, 0.918),
+            rgba(255, 115, 1, 0.822)
+        );
+        width: 75%;
+        height: 100vh;
+        margin: 0px;
+        top: 0px;
+        right: -850px;
+        border-radius: 20px;
+        transition: 1.2s;
+    }
+    #relatorioOpen {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 80px;
+        height: 100px;
+        border-radius: 10px;
+        border: none;
+        background: url('../imagens/formulario.png');
+        background-size: 100%;
+        background-position: 80%;
+    }
+    #notific {
+        position: absolute;
+        font-size: 30px;
+        font-family: game_over;
+        color: rgba(0, 0, 0, 0.89);
+        background-color: rgba(255, 0, 0, 0.767);
+        border: 5px solid rgba(0, 0, 0, 0.644);
+        border-radius: 20px;
+        padding: 10px;
+        bottom: 0px;
+        left: -80%;
+        transition: 1s;
+    }
+    .h1relatorio {
+        font-size: 35px;
+        font-family: game_over;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.459);
+        width: 80%;
+        height: 12%;
+        border-radius: 20px;
+        padding: 5px 20px 5px 20px;
+        margin: 10px 10% 10px 10%;
+        color: rgb(162, 223, 238);
+        text-shadow: 2px 2px 2px rgb(0,0,0,.8);
+    }
+
+    #loaded {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        top: calc(50vh - 200px);
+        left: calc(50% - 100px);
+        justify-content: center;
+        transition: .5s;
+    }
+    #contLoad {
+        text-align: center;
+        font-family: game_over;
+        font-size: 140px;
+        color: rgb(22, 230, 39);
+        margin-top: 0;
+        text-shadow: 0px 0px 3px rgba(32, 32, 32, 0.897);
+        transition: .3s;
+    }
+}
+/* body {
     overflow: hidden;
     background-image:
     linear-gradient(
@@ -255,4 +671,4 @@ canvas {
     margin-top: 0;
     text-shadow: 0px 0px 5px rgba(32, 32, 32, 0.897);
     transition: .3s;
-}
+} */

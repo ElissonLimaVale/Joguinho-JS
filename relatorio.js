@@ -7,15 +7,19 @@ function openDados(){
         document.getElementById("relat04").innerHTML = "Pontuação Maxima atual: " + relatorio.maxPontos;
         document.getElementById("relat05").innerHTML = "Soma de todos pontos: " + relatorio.somaPontos;
         document.getElementById("relat06").innerHTML = "Sua Media Atual: " + Media.toFixed(2);
+        $("#relInit").show(200);
         document.getElementById("relInit").style = "right: 0;";
         relatorio.open = 1;
     }else if(relatorio.open == 1 || estadoAtual == estados.jogando){
-        document.getElementById("relInit").style = "right: -75%;";
+        document.getElementById("relInit").style = "right: -80%;";
+        $("#relInit").hide(300);
         relatorio.open =0;
     }else if(relatorio.partidas <= 2 && estadoAtual == estados.jogar){
+        $("#notific").show(300);
         document.getElementById("notific").style = "left: 0%;";
         setTimeout(function(){
-            document.getElementById("notific").style = "left: -75%;";
+            document.getElementById("notific").style = "left: -100%;";
+            $("#notific").hide(400);
         }, 4000);
     }
 }

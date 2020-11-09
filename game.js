@@ -1,6 +1,8 @@
 $(document).ready(function(){
     document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
     $("#loaded").hide();
+    $("#relInit").hide();
+    $("#notific").hide();
 });
 var canvas, contex, ALTURA, ALTURA, frames = 0,tempoParada = 0,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
@@ -32,11 +34,12 @@ estados = {
 },
 // esse é um tipo de variavel que pode ter varios valores e pode também ter funções, como se fosse uma classe.
 chao = { 
-    y: 450,
+    y: 0,
     altura: 50,
     cor: "rgb(56, 60, 61)",
     // desenha a tela principal do jogo
     desenha: function(){
+        this.y = ALTURA - 50;
         contex.fillStyle = this.cor;
         contex.fillRect(0, this.y, LARGURA, this.altura);
     }
@@ -197,7 +200,6 @@ function Over(){
         localStorage.setItem("novoRecord",relatorio.novoRecord += 1);
         setRecordMemory(obstaculos.score);
         record = getRecordMemory();
-        setRecord(record);
         eventRecord();
     }else{
         gameOver();
@@ -215,28 +217,53 @@ function pular(){// verifica a variavel estado e só executa a função pular se
     }
     reproduz();
 }
+// $("#canvas").click(function(){
+//     if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+//         pular();// Chama o método pular quando é Clicado no canvas
+//     }else if(estadoAtual == estados.jogar){
+//         playLoad();
+//     }
+// });
+document.getElementById("canvas").addEventListener("mousedown", function(){
+    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+        pular();// Chama o método pular quando é Clicado no canvas
+    }else if(estadoAtual == estados.jogar){
+        playLoad();
+    }
+});
 function main(){
     ALTURA = window.innerHeight; //captura a altura da tela do usuario
     LARGURA = window.innerWidth; //captura a argura da tela
     // adapta a tela para 500x600 caso a tela do usuario seja grande o suficiente
     // se não, vai apenas tomar o tamanho total da tela
-    if (LARGURA >= 800 ){
-        ALTURA = 500;
-        LARGURA = 800;
-    }else{
-        ALTURA = 500;
+    alert( LARGURA + " x " + ALTURA);
+    if (LARGURA >= 1000 && ALTURA <= 800){
+        LARGURA = (LARGURA / 100) * 80;
+        ALTURA = (ALTURA / 100) * 80;
+
+        imageUser = new Image();
+        imageUser.src = "imagens/user.png";
+        obsImage = new Image();
+        obsImage.src="imagens/obsTodos.png";
+        obsImageCima = new Image();
+        obsImageCima.src="imagens/obsTodosCima.png";
+    }else if(LARGURA >= 1300 && ALTURA >= 1400){
+        LARGURA = (LARGURA / 100) * 90;
+        ALTURA = (ALTURA / 100) * 70;
+
+        imageUser = new Image();
+        imageUser.src = "imagens/user.png";
+        obsImage = new Image();
+        obsImage.src="imagens/obsTodos.png";
+        obsImageCima = new Image();
+        obsImageCima.src="imagens/obsTodosCima.png";
     }
+    alert( LARGURA + " x " + ALTURA);
     // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
     canvas.height = ALTURA;
     canvas.style.border = "5px solid rgb(0,0,0)";
-    imageUser = new Image();
-    imageUser.src = "imagens/user.png";
-    obsImage = new Image();
-    obsImage.src="imagens/obsTodos.png";
-    obsImageCima = new Image();
-    obsImageCima.src="imagens/obsTodosCima.png";
 
     contex = canvas.getContext("2d");
 
@@ -248,8 +275,6 @@ function main(){
             pular(); // se a tecla apertada for a tecla de espaço, chama a função "pular()"
         }
     }
-    // Chama o método pular quando é detectado o evento "mousedown" que é quando o jogador clica com o mouse
-    document.addEventListener("mousedown", pular);
     estadoAtual = estados.jogar;// abrindo o play no jogo
     // chama a função rodar que vai atualizar e desenhar os objetos do jogo
     rodar();
@@ -294,12 +319,11 @@ function desenha(){
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
         contex.font = "40px game_over";
-        contex.fillText("CLIQUE PARA INICIAR!", 90, (ALTURA / 2) - 20);
+        contex.fillText("CLIQUE PARA INICIAR!", 180, (ALTURA / 2) - 20);
     }
-    frames = 0;
-            
     //O código abaixo desenha o chão
     chao.desenha();
+
     if(estadoAtual == estados.jogando || estadoAtual == estados.perdeu){
         // Dsenhando e preparando os obstaculos para serem inseridos
         obstaculos.desenha();
@@ -350,27 +374,12 @@ function newGame(){
     estadoAtual = estados.jogar;
     obstaculos._obs = [];
     obstaculos._obs2 = [];
-    for(i = 1; i <= 10; i++){
-        id = "r0" + i;
-        document.getElementById(id).style = "animation: none;";
-    }
 }
-function setRecord(recorde){
-    for(i = 1; i <= 10; i++){
-        id = "r0" + i;
-        document.getElementById(id).innerHTML = recorde;
-    }
-}
+
 function eventRecord(){
     if(estadoAtual = estados.perdeu){
         document.getElementById("recordBody").style = "top: 20px;";
-        for(i = 1; i <= 10; i++){
-            id = "r0" + i;
-            var tempo = Math.floor(5 * Math.random() + 1);
-            document.getElementById(id).style = "animation: chuva " + tempo + "s linear;";
-        }
     }
-            
 }
 function playLoad(){
     if(estadoAtual == estados.jogar){
