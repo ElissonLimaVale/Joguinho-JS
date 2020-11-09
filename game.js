@@ -223,6 +223,8 @@ function main(){
     if (LARGURA >= 800 ){
         ALTURA = 500;
         LARGURA = 800;
+    }else{
+        ALTURA = 500;
     }
     // criando a tela
     canvas = document.querySelector("canvas");
