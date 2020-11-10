@@ -199,7 +199,7 @@ function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
     ALTURA = (ALTURA / 100) * 80;
-    // CRIA A TELA - CANVAS
+
         document.getElementById("click-cell").addEventListener("mousedown", function(){
             if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
                 pular();// Chama o método pular quando é Clicado no canvas
