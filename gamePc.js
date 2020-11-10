@@ -20,7 +20,7 @@ chao = {
         contex.fillStyle = this.cor;
         contex.fillRect(0, this.y, LARGURA, this.altura);
     }
-    },
+},
 user = {
     x: 50,
     y: 80,
@@ -195,12 +195,19 @@ function pular(){
     }
     reproduz();
 }
-
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
     ALTURA = (ALTURA / 100) * 80;
-    // CRIA A TELA - CANVAS
+    
+        document.getElementById("click-cell").addEventListener("mousedown", function(){
+            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+                pular();// Chama o método pular quando é Clicado no canvas
+            }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+                playLoad();
+            }
+        });
+    // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
     canvas.height = ALTURA;
@@ -347,4 +354,5 @@ function loaded(){
         openDados();
     }
 }
+
 main();

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
     function openDados(){
         if(estadoAtual == estados.jogar && relatorio.open == 0 && relatorio.partidas > 5){
             let Media = relatorio.somaPontos / relatorio.partidas;
@@ -26,4 +26,3 @@ $(document).ready(function(){
             }, 4000);
         }
     }
-});

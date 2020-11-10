@@ -4,8 +4,8 @@ $(document).ready(function(){
     document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
     $("#loaded").hide();
     $("#relInit").hide();
-
-    if(localStorage.getItem("partidas") == null){
+});
+if(localStorage.getItem("partidas") == null){
         localStorage.setItem("partidas", 0);
         localStorage.setItem("novoRecord", 0);
         localStorage.setItem("maxPontos", 0);
@@ -25,8 +25,6 @@ $(document).ready(function(){
             this.somaPontos = parseInt(localStorage.getItem("somaPontos"))
         }
     };
-    
-});
 ALTURA = window.innerHeight; // CAPTURA A ALTURA DA TELA DO USUARIO
 LARGURA = window.innerWidth; //  CAPTURA A LARGURA
     
