@@ -196,14 +196,6 @@ function pular(){
     }
     reproduz();
 }
-// PULA OU INICIA O JOGO
-function PuloPlay(){
-    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-        pular();// Chama o método pular quando é Clicado no canvas
-    }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-        playLoad();
-    }
-}
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
@@ -223,15 +215,25 @@ function main(){
     obsImageCima.src="imagens/obsTodosCima.png";
     contex = canvas.getContext("2d");
 
+    // PULA OU INICIA O JOGO
+    document.getElementById("canvas").addEventListener("mousedown", function(){
+        if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+            pular();// Chama o método pular quando é Clicado no canvas
+        }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+            playLoad();
+        }
+    });
     // CAPTURA TECLAS DIGITADAS E SE A TECLA FOR ESPAÇO EXECUTA A FUNÇÃO PULAR
     document.onkeypress = function(){
         if(window.event.keyCode == 32){
             pular();
         }
     };
-
     estadoAtual = estados.jogar;
     rodar();
+}
+function PuloPlay(){
+    return;
 }
 function rodar(){
 atualiza();
@@ -347,6 +349,7 @@ function playLoad(){
     }
 }
 function loaded(){
+    reproduz();
     if(LoadNewGame >= 0){
         $("#loaded").show();
         $("#contLoad").text(LoadNewGame);

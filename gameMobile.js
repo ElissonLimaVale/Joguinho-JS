@@ -352,6 +352,7 @@ function playLoad(){
     }
 }
 function loaded(){
+    reproduz();
     if(LoadNewGame >= 0){
         $("#loaded").show();
         $("#contLoad").text(LoadNewGame);
