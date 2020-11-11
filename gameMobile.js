@@ -1,6 +1,6 @@
 
 // VARIÁVEIS DE JOGO
-var canvas, contex, frames = 0,tempoParada = 0, celular = false,
+var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
 estadoAtual, record = 0, hard = 190, LoadNewGame = 4; 
 
@@ -345,7 +345,8 @@ function playLoad(){
         LoadNewGame--;
         loaded();
         if(LoadNewGame > -1){
-            setTimeout(function(){
+            clearTimeout(Timeout);
+            Timeout = setTimeout(function(){
                 playLoad();
             }, 1000);
         }
