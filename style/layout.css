@@ -17,6 +17,8 @@
             src: url('../fonts/joystix.ttf');
         }
     canvas {
+        width: 80%;
+        height: 80vh;
         margin-top: 5vh;
         border-radius: 25px;
         padding: 0px;
@@ -172,7 +174,7 @@
         text-align: center;
         background-color: rgba(0, 0, 0, 0.459);
         width: 80%;
-        height: 12%;
+        height: 13%;
         border-radius: 20px;
         padding: 5px 20px 5px 20px;
         margin: 10px 10% 10px 10%;
@@ -379,7 +381,7 @@
     #notific {
         position: absolute;
         width: 80%;
-        height: 28vh;
+        height: 45vh;
         font-size: 28px;
         font-family: game_over;
         color: rgba(0, 0, 0, 0.89);
@@ -397,9 +399,9 @@
         text-align: center;
         background-color: rgba(0, 0, 0, 0.459);
         width: 80%;
-        height: 8%;
+        height: 10%;
         border-radius: 20px;
-        padding: 5px 20px 5px 20px;
+        padding: 10% 20px 5px 10%;
         margin: 10px 10% 10px 10%;
         color: rgb(162, 223, 238);
         text-shadow: 2px 2px 2px rgb(0,0,0,.8);

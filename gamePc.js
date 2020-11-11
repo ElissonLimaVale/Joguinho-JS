@@ -167,6 +167,11 @@ obstaculos = {
 // REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
     localStorage.setItem("partidas", relatorio.partidas += 1);
+    relatorio.atualiza();
+    velocidade = 0;
+    user.velocidade = 0;// pausa o bloco do usuario
+    user.gravidade = 0;
+    estadoAtual = estados.perdeu;
     if(obstaculos.score > relatorio.maxPontos){
         localStorage.setItem("maxPontos", obstaculos.score);
     }
@@ -179,11 +184,7 @@ function Over(){
         gameOver();
     }
     localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
-    relatorio.atualiza();
-    velocidade = 0;
-    user.velocidade = 0;// pausa o bloco do usuario
-    user.gravidade = 0;
-    estadoAtual = estados.perdeu;
+   
 }
 if(getRecordMemory() != null){
     record = getRecordMemory();
@@ -195,18 +196,19 @@ function pular(){
     }
     reproduz();
 }
+// PULA OU INICIA O JOGO
+function PuloPlay(){
+    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+        pular();// Chama o método pular quando é Clicado no canvas
+    }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+        playLoad();
+    }
+}
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
-    ALTURA = (ALTURA / 100) * 80;
+    ALTURA = (ALTURA / 100) * 90;
 
-        document.getElementById("click-cell").addEventListener("mousedown", function(){
-            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-                pular();// Chama o método pular quando é Clicado no canvas
-            }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-                playLoad();
-            }
-        });
     // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
@@ -270,7 +272,7 @@ function desenha(){
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
         contex.font = "40px game_over";
-        contex.fillText("CLIQUE PARA INICIAR", 180, (ALTURA / 2) - 20);
+        contex.fillText("CLIQUE PARA INICIAR", 200, (ALTURA / 2) - 20);
     }
     
     //O código abaixo desenha o chão

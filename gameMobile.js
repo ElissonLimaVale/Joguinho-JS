@@ -169,6 +169,10 @@ const estados = {
 // REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
     localStorage.setItem("partidas", relatorio.partidas += 1);
+    velocidade = 0;
+    user.velocidade = 0;// pausa o bloco do usuario
+    user.gravidade = 0;
+    estadoAtual = estados.perdeu;
     if(obstaculos.score > relatorio.maxPontos){
         localStorage.setItem("maxPontos", obstaculos.score);
     }
@@ -182,10 +186,6 @@ function Over(){
     }
     localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
     relatorio.atualiza();
-    velocidade = 0;
-    user.velocidade = 0;// pausa o bloco do usuario
-    user.gravidade = 0;
-    estadoAtual = estados.perdeu;
 }
 if(getRecordMemory() != null){
     record = getRecordMemory();
@@ -197,7 +197,13 @@ function pular(){
     }
     reproduz();
 }
-
+function PuloPlay(){
+    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+        pular();// Chama o método pular quando é Clicado no canvas
+    }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+        playLoad();
+    }
+}
 // INICIA O JOGO NA VERSÃO MOBILE-CELULAR
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
@@ -207,7 +213,7 @@ function main(){
     velocidaDificuldade = 3;
     user.gravidade = .46;
     celular = true;
-
+    
     // CRIA A TELA - CANVAS
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
