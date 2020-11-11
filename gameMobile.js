@@ -272,7 +272,7 @@ function desenha(){
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
         contex.font = "18px game_over";
-        contex.fillText("CLIQUE PARA INICIAR", 52, (ALTURA / 2) - 20);
+        contex.fillText("CLIQUE PARA INICIAR", 40, (ALTURA / 2) - 20);
     }
     //O código abaixo desenha o chão
     chao.desenha();
