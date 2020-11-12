@@ -341,6 +341,7 @@ function eventRecord(){
     }
 }
 function playLoad(){
+    if(LoadNewGame > 3){document.getElementById("notific").style = "left: -100%;";}
     if(estadoAtual == estados.jogar){
         LoadNewGame--;
         loaded();
