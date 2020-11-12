@@ -123,7 +123,8 @@
         margin: 10px 20% 10px 20%;
         padding: 20px;
         border: 10px solid rgba(0, 0, 0, 0.829);
-        border-radius: 50px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         background-color: rgb(254, 24, 3);
     }
     
@@ -139,8 +140,9 @@
         height: 100vh;
         margin: 0px;
         top: 0px;
-        right: -850px;
-        border-radius: 20px;
+        right: -80%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         transition: 1.2s;
     }
     #relatorioOpen {
@@ -358,8 +360,9 @@
         height: 100vh;
         margin: 0px;
         top: 0px;
-        right: -850px;
-        border-radius: 20px;
+        right: -80%;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
         transition: 1.2s;
     }
     #relatorioOpen {

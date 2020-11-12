@@ -361,7 +361,6 @@ function loaded(){
         $("#loaded").hide();
         playGame();
         openDados();
-        reproduz();
     }
 }
 

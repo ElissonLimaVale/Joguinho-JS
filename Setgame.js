@@ -3,7 +3,7 @@ $(document).ready(function(){
     var ALTURA, LARGURA;
     document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
     $("#loaded").hide();
-    $("#relInit").hide();
+    $("#relInit").hide(300);
 });
 if(localStorage.getItem("partidas") == null){
         localStorage.setItem("partidas", 0);
