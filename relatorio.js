@@ -15,7 +15,7 @@
             document.getElementById("relInit").style = "right: -80%;";
             $("#relInit").hide(500);
             relatorio.open = 0;
-        }else if(relatorio.partidas <= 2 && estadoAtual == estados.jogar){
+        }else if(relatorio.partidas <= 5 && estadoAtual == estados.jogar){
             $("#notific").show(300);
             document.getElementById("notific").style = "left: 0%;";
             relatorio.open = 1;
