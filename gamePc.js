@@ -168,15 +168,6 @@ function desenha(){
     contex.fillStyle = "#50Beff";
     contex.fillRect(0, 0, LARGURA, ALTURA);
 
-    // desenhado o score na tela
-    contex.fillStyle = "#fff";
-    contex.font = "20px game_over";
-    contex.fillText("SCORE: " + obstaculos.score,30,30);
-
-    //desenha texto e com o record
-    contex.fillStyle = "#fff";
-    contex.font = "20px game_over";
-    contex.fillText("RECORD: " + record, LARGURA - 200, 30);
     
     //O código abaixo desenha o chão
     chao.desenha();
@@ -189,7 +180,16 @@ function desenha(){
     user.desenha();
     //desenha o prédio com o ninho
     Predio.desenha();
+    // desenhado o score na tela
+    contex.fillStyle = "#fff";
+    contex.font = "20px game_over";
+    contex.fillText("SCORE: " + obstaculos.score,30,30);
 
+    //desenha texto e com o record
+    contex.fillStyle = "#fff";
+    contex.font = "20px game_over";
+    contex.fillText("RECORD: " + record, LARGURA - 200, 30);
+    
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
         contex.font = "40px game_over";
