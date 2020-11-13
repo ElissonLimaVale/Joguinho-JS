@@ -2,7 +2,7 @@
 // VARIÁVEIS DE JOGO
 var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 190, LoadNewGame = 4;
+estadoAtual, record = 0, hard = 195, LoadNewGame = 4;
 
 const estados = {
     jogar: 0,
