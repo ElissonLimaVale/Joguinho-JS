@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="click-cell" onclick="PularCell();"></div>
-        <button id="relatorioOpen"onclick="openDados();reproduz();"></button>
+        <button id="relatorioOpen"onclick="openDados();audioButonPlay();reproduz();"></button>
         <div id="relInit" class="relatorioDiv">
             <h1 id="relat01" class="h1relatorio"></h1>
             <h1 id="relat02" class="h1relatorio"></h1>
@@ -28,13 +28,13 @@
                 <h1 id="h1pontos">score:20</h1>
                 <h1 id="h1record">Record:80</h1>
             </div>
-            <button class="overButton" onclick="newGame();reproduz();">Novo jogo</button>
+            <button class="overButton" onclick="newGame();audioButonPlay();reproduz();">Novo jogo</button>
         </div>
         <div id="recordBody" class="newRecord">
             <h1>!Novo Record!</h1>
             <img class="record" src="imagens/newRecord.png" alt="">
             <h2 id="record-h2">BEST!</h2>
-            <button class="overButton" onclick="newGame();reproduz();">Novo Jogo</button>
+            <button class="overButton" onclick="newGame();audioButonPlay();reproduz();">Novo Jogo</button>
         </div>
         <h1 id="notific">você ainda não possui <br/>dados de jogo suficiente!<br/> Continui jogando..</h1>
         <canvas id="canvas"></canvas>

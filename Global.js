@@ -2,7 +2,8 @@
 // VARIÁVEIS DE JOGO
 var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 195, LoadNewGame = 4;
+estadoAtual, record = 0, hard = 195, LoadNewGame = 4, audioPulo = document.getElementById('click01')
+, audioButton = document.getElementById('click02'), musica = document.getElementById('click03');
 
 const estados = {
     jogar: 0,
@@ -79,8 +80,8 @@ function Over(){
 function pular(){
     if(estadoAtual == estados.jogando){
         user.pula();
+        audioPuloPlay();
     }
-    reproduz();
 }
 function rodar(){
     atualiza();
@@ -113,20 +114,6 @@ function playGame(){
     document.getElementById("notific").style = "left: -100%;";
 }
 // processamento do audio do jogo.
-function reproduz(){       
-    if(estadoAtual != estados.jogando){
-        var audio = document.getElementById('click02');
-    }else if(estadoAtual != estados.jogar || estadoAtual != estados.perdeu){
-        var audio = document.getElementById('click01');
-    }
-    var audio01 = document.getElementById('click03');
-    if(estadoAtual == estados.jogando){
-        audio01.play();
-    }else{
-        audio01.pause();
-    }
-    audio.play();
-}   
 function pausar(){
     if(estadoAtual == estados.jogando){
         var audio = document.getElementById('click01');
@@ -171,7 +158,7 @@ function playLoad(){
     }
 }
 function loaded(){
-    LoadNewGame < 0 ? 0 : reproduz();
+    LoadNewGame < 0 ? 0 : audioButonPlay();
     if(LoadNewGame >= 0){
         $("#loaded").show();
         $("#contLoad").text(LoadNewGame);
@@ -179,5 +166,19 @@ function loaded(){
         $("#loaded").hide();
         playGame();
         openDados();
+        reproduz();
     }
 }
+function audioButonPlay(){
+    audioButton.play();
+}
+function audioPuloPlay(){
+    audioPulo.play();
+}
+function reproduz(){       
+    if(estadoAtual == estados.jogando){
+        musica.play();
+    }else{
+        musica.pause();
+    }
+}   
