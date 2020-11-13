@@ -4,7 +4,7 @@ var Predio = {
     x: 0,
     desenha: function(){
         if(this.x >= -500){
-            obsPredio.desenha( this.x - 5,120,325);
+            obsPredio.desenha( this.x - 20,125,325);
         }
     },
     atualiza: function(){
