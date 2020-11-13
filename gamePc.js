@@ -139,7 +139,7 @@ function main(){
     imageUser = new Image();
     imageUser.src = "imagens/user.png";
     obsImage = new Image();
-    obsImage.src="imagens/obsTodosPC.png";
+    obsImage.src = "imagens/obsTodosPc.png";
     obsImageCima = new Image();
     obsImageCima.src="imagens/obsTodosCimaPc.png";
     obsPredioNinho = new Image();
