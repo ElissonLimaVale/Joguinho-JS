@@ -2,9 +2,10 @@
 // objeto Predio
 var Predio = {
     x: 0,
+    y: 140,
     desenha: function(){
         if(this.x >= -500){
-            obsPredio.desenha( this.x - 20,125,325);
+            obsPredio.desenha( this.x - 20,this.y,325);
         }
     },
     atualiza: function(){
@@ -64,12 +65,12 @@ var Predio = {
             obs.x -= velocidade;
             obs2.x -= velocidade;
             // verifica se o bloco do jogador colidiu com o obstaculo
-            if(user.x + user.largura > obs.x && obs.x - obs.largura < user.x + user.largura &&
-                obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura){
+            if(user.x + user.largura + 2 >= obs.x && obs.x - obs.largura < user.x + user.largura &&
+                obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura + 2){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 Over();
-            }else if(user.x + user.largura > obs2.x - 2 && user.x < obs2.x + obs2.largura - 2 &&
-                (user.y - user.altura) + 10 <= (chao.y - obs.altura) - hard){
+            }else if(user.x + user.largura > obs2.x - 4 && user.x < obs2.x + obs2.largura - 2 &&
+                (user.y - user.altura) + 4 <= (chao.y - obs.altura) - hard){
                     // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 Over();
             }
@@ -92,7 +93,7 @@ var Predio = {
         frames = 0;
         tempoParada = 0;
         this.score = 0;
-        user.y = 80;
+        user.y = Predio.y - user.altura;
         Predio.x = 10;
     },
 
@@ -154,6 +155,7 @@ function main(){
     obsPredioNinho.src="imagens/prediocomninho1.png";
 
     estadoAtual = estados.jogar;
+    user.y = Predio.y - user.altura;
     rodar();
 }
 function PularCell(){
