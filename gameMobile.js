@@ -158,13 +158,13 @@ function main(){
     user.y = Predio.y - user.altura;
     rodar();
 }
-function PularCell(){
-    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+document.getElementById("click-cell").addEventListener("mousedown", function(){
+    if(estadoAtual != estados.jogar){
         pular();// Chama o método pular quando é Clicado no canvas
     }else if(estadoAtual == estados.jogar && relatorio.open != 1){
         playLoad();
     }
-}
+});
 function desenha(){
     //O código abaixo desenha a tela de jogo
     contex.fillStyle = "#50Beff";
