@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="style/layout.css"/>
     </head>
     <body>
-        <div id="click-cell" onclick="PuloPlay();"></div>
+        <div id="click-cell" onclick="PularCell();"></div>
         <button id="relatorioOpen"onclick="openDados();reproduz();"></button>
         <div id="relInit" class="relatorioDiv">
             <h1 id="relat01" class="h1relatorio"></h1>
@@ -23,7 +23,7 @@
 
         <div id="perdeu" class="over">
             <img class="gameover" src="imagens/gameOver.png"/>
-            <img class="morto" src="imagens/morto.png"/>
+            <img class="morto" src="imagens/morto.gif"/>
             <div class="relatorio">
                 <h1 id="h1pontos">score:20</h1>
                 <h1 id="h1record">Record:80</h1>
@@ -33,7 +33,7 @@
         <div id="recordBody" class="newRecord">
             <h1>!Novo Record!</h1>
             <img class="record" src="imagens/newRecord.png" alt="">
-            <h2>THE BEST</h2>
+            <h2 id="record-h2">BEST!</h2>
             <button class="overButton" onclick="newGame();reproduz();">Novo Jogo</button>
         </div>
         <h1 id="notific">você ainda não possui <br/>dados de jogo suficiente!<br/> Continui jogando..</h1>
@@ -47,6 +47,7 @@
     <audio id="click02" src="soungs/click1.wav"></audio>
     <audio id="click03" src="soungs/Musica.mp3"></audio>
     <script src="sprite.js"></script>
+    <script src="Global.js"></script>
     <script src="Setgame.js"></script>
     <script src="relatorio.js"></script>
     
