@@ -2,9 +2,10 @@
 // objeto Predio
 var Predio = {
     x: 0,
+    y: 112,
     desenha: function(){
         if(this.x >= -500){
-            obsPredio.desenha( this.x - 45,112,340);
+            obsPredio.desenha( this.x - 45,this.y,340);
         }
     },
     atualiza: function(){

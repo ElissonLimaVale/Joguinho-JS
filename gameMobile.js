@@ -2,9 +2,10 @@
 // objeto Predio
 var Predio = {
     x: 0,
+    y: 140,
     desenha: function(){
         if(this.x >= -500){
-            obsPredio.desenha( this.x - 20,125,325);
+            obsPredio.desenha( this.x - 20,this.y,325);
         }
     },
     atualiza: function(){
@@ -92,7 +93,7 @@ var Predio = {
         frames = 0;
         tempoParada = 0;
         this.score = 0;
-        user.y = 80;
+        user.y = Predio.y - user.altura;
         Predio.x = 10;
     },
 
@@ -154,6 +155,7 @@ function main(){
     obsPredioNinho.src="imagens/prediocomninho1.png";
 
     estadoAtual = estados.jogar;
+    user.y = Predio.y - user.altura;
     rodar();
 }
 function PularCell(){
