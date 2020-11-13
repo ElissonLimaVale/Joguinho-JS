@@ -65,8 +65,8 @@ var Predio = {
             obs.x -= velocidade;
             obs2.x -= velocidade;
             // verifica se o bloco do jogador colidiu com o obstaculo
-            if(user.x + user.largura + 2 >= obs.x && obs.x - obs.largura < user.x + user.largura &&
-                obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura + 2){
+            if(user.x + user.largura > obs.x && obs.x - obs.largura < user.x + user.largura &&
+                obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 Over();
             }else if(user.x + user.largura > obs2.x - 4 && user.x < obs2.x + obs2.largura - 2 &&
@@ -158,13 +158,13 @@ function main(){
     user.y = Predio.y - user.altura;
     rodar();
 }
-document.getElementById("click-cell").addEventListener("mousedown", function(){
-    if(estadoAtual != estados.jogar){
+function PularCell(){
+    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
         pular();// Chama o método pular quando é Clicado no canvas
     }else if(estadoAtual == estados.jogar && relatorio.open != 1){
         playLoad();
     }
-});
+}
 function desenha(){
     //O código abaixo desenha a tela de jogo
     contex.fillStyle = "#50Beff";
