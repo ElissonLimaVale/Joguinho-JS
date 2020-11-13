@@ -13,7 +13,7 @@
             relatorio.open = 1;
         }else if(relatorio.open == 1 || estadoAtual == estados.jogando){
             document.getElementById("relInit").style = "right: -80%;";
-            $("#relInit").hide(500);
+            $("#relInit").hide(200);
             relatorio.open = 0;
         }else if(relatorio.partidas <= 5 && estadoAtual == estados.jogar){
             $("#notific").show(300);
