@@ -33,7 +33,34 @@ chao = {
     }
 },
 nuvem = {
-    
+    _nuv: [],
+    _nuv2: [],
+    _nuv3: [],
+    tempoInsere:  0,
+    score: 0,
+    atualiza: function(){
+
+    },
+    insere: function(){
+        this._nuv.push({ //inserindo os obstaculos no array "_obs"
+            x: LARGURA,
+            y: 40 + Math.floor(40 * Math.random()),
+            largura: 80,
+            altura: 40, 
+        },);
+        this._nuv2.push({ //inserindo os obstaculos no array "_obs"
+            x: LARGURA,
+            y: 40 + Math.floor(40 * Math.random()),
+            largura: 80,
+            altura: 40, 
+        },);
+    },
+    desenha: function(){
+        
+    },
+    reset: function(){
+
+    }
 },
 user = {
     x: 50,

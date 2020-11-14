@@ -22,12 +22,16 @@
             document.getElementById("gameinit").style = "top: calc(50% - 18%);";
         }else if(relatorio.partidas <= 5 && estadoAtual == estados.jogar){
             document.getElementById("notific").hidden = false;
-            document.getElementById("notific").style = "left: 0%;";
+            document.getElementById("gameinit").style = "top: -80vh;";
+            setTimeout(function(){
+                document.getElementById("notific").style = "left: 0%;";
+            }, 300);
             setTimeout(function(){
                 document.getElementById("notific").style = "left: -100%;";
+                document.getElementById("gameinit").style = "top: calc(50% - 18%);";
                 setTimeout(function(){
                     document.getElementById("notific").hidden = true;
-                }, 1000);
+                }, 300);
             }, 4000);
         }
     }
