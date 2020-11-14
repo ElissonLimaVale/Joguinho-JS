@@ -89,8 +89,8 @@ var Predio = {
     // ZERA OS VALORES DE JOGO PARA REINICIAR OS OBSTACULOS
     reset: function(){
         velocidade = 3;
-        velocidaDificuldade = 2.5;
-        user.gravidade = .30;
+        velocidaDificuldade = 4;
+        user.gravidade = .32;
         frames = 0;
         tempoParada = 0;
         this.score = 0;
@@ -138,8 +138,8 @@ function main(){
     tolerancia = 4.5;
 
     velocidade = 2;
-    velocidaDificuldade = 2.5;
-    user.gravidade = .30;
+    velocidaDificuldade = 4;
+    user.gravidade = .32;
     user.forcaDoPulo = 6;
     
     // CRIA A TELA - CANVAS
