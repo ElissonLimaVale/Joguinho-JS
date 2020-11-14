@@ -65,15 +65,13 @@ var Predio = {
             obs.x -= velocidade;
             obs2.x -= velocidade;
             // verifica se o bloco do jogador colidiu com o obstaculo
-            if(user.x + user.largura - 5 >= obs.x && obs.x - obs.largura - 5 <= user.x + user.largura &&
-                obs.x >= user.x - user.largura - 5 && user.y + user.altura >= chao.y - obs.altura){
+            if(user.x + user.largura - tolerancia  >= obs.x && user.x <= obs.x + obs.largura - tolerancia &&
+                user.y + user.altura >= chao.y - obs.altura){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                bateuPlay();
                 Over();
-            }else if(user.x + user.largura - 5 >= obs2.x && user.x - 5 <= obs2.x + obs2.largura &&
-                (user.y - user.altura) + 4 <= (chao.y - obs.altura) - hard){
+            }else if(user.x + user.largura - tolerancia >= obs2.x && user.x - tolerancia <= obs2.x + obs2.largura &&
+                (user.y - user.altura) + tolerancia <= (chao.y - obs.altura) - hard){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                bateuPlay();
                 Over();
             }
             //verificando se o objeto ja passou da tela, para apagá-lo do arry, assim evitando
@@ -137,6 +135,8 @@ function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 95;
     ALTURA = (ALTURA / 100) * 70;
+    tolerancia = 4.5;
+
     velocidade = 2;
     velocidaDificuldade = 2.5;
     user.gravidade = .30;

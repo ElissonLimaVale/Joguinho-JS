@@ -2,7 +2,7 @@
 //#region VARIÁVEIS DE JOGO
 var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 5,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 195, LoadNewGame = 4,
+estadoAtual, record = 0, hard = 195, LoadNewGame = 4, tolerancia,
 
 // variaveis e audio
 audioPulo = document.getElementById('click01'),
@@ -48,7 +48,7 @@ user = {
         this.y += this.velocidade;
         // O código abaixo faz com que o bloco pare de cair, travando o vaor do eixo y 
         if(this.y > chao.y - this.altura){
-            this.y = chao.y - this.altura;
+            this.y = chao.y - this.altura + 6;
             this.velocidade = 0;
         }
     },
@@ -69,7 +69,8 @@ user = {
 //#region OVER =>  REINICIA R REGISTRA DADOS APÓS GAME OVER
 // REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
-    imageUser.src = "imagens/user1.png";
+    bateuPlay();
+    imageUser.src = "imagens/passarinho.png";
     localStorage.setItem("partidas", relatorio.partidas += 1);
     velocidade = 0;
     estadoAtual = estados.perdeu;

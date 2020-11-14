@@ -23,13 +23,13 @@ obstaculos = {
     insere: function(){
         this._obs.push({ //inserindo os obstaculos no array "_obs"
             x: LARGURA,
-            largura: 60, // gera uma largura aleatória probloco entre 30 e 50
+            largura: 84, // gera uma largura aleatória probloco entre 30 e 50
             altura: 55 + Math.floor(130 * Math.random()), // gera uma altura aleatoria entre 30 e 120 px
             cor: this.cores[Math.floor(5 * Math.random() + 1)]
         },);
         this._obs2.push({ //inserindo os obstaculos no array "_obs"
             x: LARGURA,
-            largura: 60, // gera uma largura aleatória probloco entre 30 e 50
+            largura: 84, // gera uma largura aleatória probloco entre 30 e 50
             altura: ALTURA - this._obs[this._obs.length - 1].altura  - hard// gera uma altura aleatoria entre 30 e 120 px
         });
         switch(velocidaDificuldade){
@@ -63,16 +63,14 @@ obstaculos = {
             obs.x -= velocidade;
             obs2.x -= velocidade;
             // verifica se o bloco do jogador colidiu com o obstaculo
-            if(user.x + user.largura - 5 >= obs.x && obs.x - obs.largura - 5 <= user.x + user.largura &&
-                obs.x > user.x - user.largura && user.y + user.altura >= chao.y - obs.altura){
-                // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                bateuPlay();
+            if(user.x + user.largura - tolerancia  >= obs.x && user.x <= obs.x + obs.largura - tolerancia &&
+               user.y + user.altura >= chao.y - obs.altura){
+
                 Over();
-            }else if(user.x + user.largura >= obs2.x - 5 && user.x - 5 <= obs2.x + obs2.largura &&
-                (user.y - user.altura) + 5 <= (chao.y - obs.altura) - hard){
-                    // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                bateuPlay();
-                Over();
+            }else if((user.x + user.largura) - tolerancia >= obs2.x && user.x <= obs2.x + obs2.largura &&
+                 (user.y - user.altura) + tolerancia <= (chao.y - obs.altura) - hard){
+                     // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
+                 Over();
             }
             //verificando se o objeto ja passou da tela, para apagá-lo do arry, assim evitando
             // que ele continue decrementando e isso consuma processamento!
@@ -128,12 +126,12 @@ obstaculos = {
 };
 if(getRecordMemory() != null){
     record = getRecordMemory();
-} 
+}
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
     ALTURA = (ALTURA / 100) * 75;
-
+    tolerancia = 4;
     // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
@@ -172,7 +170,7 @@ function desenha(){
     contex.fillStyle = "#50Beff";
     contex.fillRect(0, 0, LARGURA, ALTURA);
 
-    
+
     //O código abaixo desenha o chão
     chao.desenha();
 
@@ -193,7 +191,7 @@ function desenha(){
     contex.fillStyle = "#fff";
     contex.font = "20px game_over";
     contex.fillText("RECORD: " + record, LARGURA - 200, 30);
-    
+
     if(estadoAtual == estados.jogar && LoadNewGame == 4){
         contex.fillStyle = "#00bc2f";
         contex.font = "40px game_over";
