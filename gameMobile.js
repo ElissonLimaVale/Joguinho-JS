@@ -84,6 +84,7 @@ var Predio = {
                 this._obs2.splice(i, 1);
                 tam--; // após apagar o objeto do array, é importante decrementar as variaveis do for
                 i--;  // para assim evitar erro no caso de dois ou mais objetos
+                pontoPlay();
             }
         }
     },
