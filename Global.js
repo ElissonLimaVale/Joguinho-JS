@@ -1,11 +1,20 @@
 
-// VARIÁVEIS DE JOGO
+//#region VARIÁVEIS DE JOGO
 var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 5,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 195, LoadNewGame = 4, audioPulo = document.getElementById('click01')
-, audioButton = document.getElementById('click02'), musica = document.getElementById('click03'),
-audioBateu = document.getElementById("batida"), audioPerdeu = document.getElementById("perdeuSom"),
-audioPonto = document.getElementById("pontuou"), audioRecord = document.getElementById("recordPlay");
+estadoAtual, record = 0, hard = 195, LoadNewGame = 4,
+
+// variaveis e audio
+audioPulo = document.getElementById('click01'),
+audioButton = document.getElementById('click02'),
+audioBateu = document.getElementById("batida"),
+audioPonto = document.getElementById("pontuou"), 
+fight = document.getElementById("321"),
+musica = document.getElementById('click03'),
+audioRecord = document.getElementById("recordPlay");
+//#endregion
+
+//#region OBJETOS DE JOGO 
 const estados = {
     jogar: 0,
     jogando: 1,
@@ -55,6 +64,9 @@ user = {
         userImage.desenha(this.x,this.y);
     }
 }
+//#endregion
+
+//#region OVER =>  REINICIA R REGISTRA DADOS APÓS GAME OVER
 // REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
     imageUser.src = "imagens/user1.png";
@@ -77,6 +89,9 @@ function Over(){
     localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
     relatorio.atualiza();
 }
+//#endregion
+
+//#region FUNÇÃO PULAR
 // VERIFICA SE O JOGO ESTA EM ANDAMENTO PARA EXECUTAR A FUNÇÃO PULAR
 function pular(){
     if(estadoAtual == estados.jogando){
@@ -84,6 +99,9 @@ function pular(){
         audioPuloPlay();
     }
 }
+//#endregion
+
+//#region  MÉTODOS DE INICIALIZAÇÃO E FRAME DO JOGO
 function rodar(){
     atualiza();
     desenha();
@@ -116,15 +134,9 @@ function playGame(){
     }
     document.getElementById("notific").style = "left: -100%;";
 }
-// processamento do audio do jogo.
-function pausar(){
-    if(estadoAtual == estados.jogando){
-        var audio = document.getElementById('click01');
-    }else{
-        var audio = document.getElementById('click01');
-    }
-    audio.pause();
-}
+//#endregion
+
+//#region CHAMA A TELA DE GAME OVER
 function gameOver(){
     if(estadoAtual == estados.perdeu){
         document.getElementById("perdeu").style = "top: 15vh;";
@@ -132,6 +144,9 @@ function gameOver(){
         document.getElementById("h1record").innerHTML = "record: "+ record;
     }
 }
+//#endregion
+
+//#region INICIA UM NOVO JOGO
 function newGame(){
     document.getElementById("perdeu").style = "top: -600px;";
     document.getElementById("recordBody").style = "top: -600px;";
@@ -142,15 +157,23 @@ function newGame(){
     user.velocidade = 0;// pausa o bloco do usuario
     user.gravidade = 0;
 }
+//#endregion
 
+//#region  CHAMA ATELA DE RECORD
 function eventRecord(){
     $("#record-h2").text("BEST " + record);
     if(estadoAtual = estados.perdeu){
         document.getElementById("recordBody").style = "top: 15vh;";
     }
 }
+//#endregion
+
+//#region CONTAGEN REGRECIVA DE INICIO
 function playLoad(){
-    if(LoadNewGame > 3){document.getElementById("notific").style = "left: -100%;";}
+    if(LoadNewGame > 3){
+        document.getElementById("notific").style = "left: -100%;";
+        fightPlay();
+    }
     if(estadoAtual == estados.jogar){
         LoadNewGame--;
         loaded();
@@ -172,12 +195,16 @@ function loaded(){
         playGame();
         openDados();
         reproduz();
+        fightPause();
     }
 }
+//#endregion
+
+//#region FUNÇÕES DE AUDIO DO JOGO
 function audioButonPlay(){
     audioButton.play();
-    audioRecord.pause();
-    audioPerdeu.pause();
+    pauseClear(document.getElementById("perdeuSom"));
+    pauseClear(audioRecord);
 }
 function audioPuloPlay(){
     audioPulo.play();
@@ -186,20 +213,33 @@ function bateuPlay(){
     audioBateu.play();
 }
 function perdeuPlay(){
-    audioPerdeu.play();
-    musica.pause();
+    document.getElementById("perdeuSom").play();
+    pauseClear(musica);
 }
 function pontoPlay(){
     audioPonto.play();
 }
 function recordPlay(){
     audioRecord.play();
-    musica.pause();
+    pauseClear(musica);
 }
+function fightPlay(){
+    fight.play();
+}
+function fightPause(){
+    fight != null? pauseClear(fight): 0;
+}
+
 function reproduz(){       
     if(estadoAtual == estados.jogando){
         musica.play();
     }else{
-        musica.pause();
+        pauseClear(musica);
     }
 }   
+
+function pauseClear(audio){
+    audio.pause();
+    audio.currentTime = 0;
+}
+//#endregion
