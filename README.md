@@ -10,15 +10,18 @@ Joguinho consiste em desviar dos obstaculos clicando no botão esquerdo do mouse
 
   **Andamento:**
 
-Gestor de proj | Participações | Andameno | Data limite | finalizado em | versão
---- | --- | --- | --- | --- | ---
-Elisson Vale | 1 | 100% | 07/09/2020 | 01/07/2020 | 2.0
+Gestor de proj | Andameno | Data limite | finalizado em | versão
+--- | --- | --- | --- | ---
+Elisson Vale | 100% | 07/09/2020 | 01/07/2020 | 2.0
 
 **Contribuições:**
 Contribuinte | Contribuição | Perfil no github
 --- | --- | ---
-Lara Magalhães | Imagens e Gifs Pixlart | ====
+Lara Magalhães | Imagens e Gifs Pixlart | [Lara.Github](https://github.com/laraprogramaai)
 
 **Agora Também para smartphone!**
-**Contribua com esse projeto enviando um feed back!** :grinning: []()
+
+
+**Contribua com esse projeto enviando um feed back!** :grinning: 
+[Instagram](https://www.instagram.com/elisson_vale/)
 
