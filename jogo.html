@@ -4,13 +4,11 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
 
         <title>Joguinho Bird</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
         <link id="icone-game" rel="icon" href="/imagens/user.png" sizes="50x50">
         <link rel="stylesheet" type="text/css" href="style/layout.css"/>
     </head>
     <body>
-        <button id="relatorioOpen"onclick="openDados();audioButonPlay();reproduz();"></button>
+        <button id="relatorioOpen" onclick="openDados();audioButonPlay();"></button>
         <div id="relInit" class="relatorioDiv">
             <h1 id="relat01" class="h1relatorio"></h1>
             <h1 id="relat02" class="h1relatorio"></h1>
@@ -32,7 +30,7 @@
         <div id="recordBody" class="newRecord">
             <h1>!Novo Record!</h1>
             <img class="record" src="imagens/newRecord.gif" alt="">
-            <h2 id="record-h2">BEST!</h2>
+            <h2 id="record-h2"></h2>
             <button class="overButton" onclick="newGame();audioButonPlay();reproduz();">Novo Jogo</button>
         </div>
         <h1 id="notific">você ainda não possui <br/>dados de jogo suficiente!<br/> Continui jogando..</h1>
@@ -52,9 +50,9 @@
     <audio id="321" src="soungs/321.wav"></audio>
     <script src="sprite.js"></script>
     <script src="Global.js"></script>
-    <script src="Setgame.js"></script>
     <script src="relatorio.js"></script>
     
     <script id="script-layout"></script>
+    <script src="Setgame.js"></script>
     </body>
 </html>

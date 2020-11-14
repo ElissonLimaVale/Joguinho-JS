@@ -162,7 +162,7 @@ function newGame(){
 
 //#region  CHAMA ATELA DE RECORD
 function eventRecord(){
-    $("#record-h2").text("BEST " + record);
+    document.getElementById("record-h2").innerHTML = "BEST " + record;
     if(estadoAtual = estados.perdeu){
         document.getElementById("recordBody").style = "top: 15vh;";
     }
@@ -189,10 +189,10 @@ function playLoad(){
 function loaded(){
     LoadNewGame < 0 ? 0 : audioButonPlay();
     if(LoadNewGame >= 0){
-        $("#loaded").show();
-        $("#contLoad").text(LoadNewGame);
+        document.getElementById("loaded").hidden = false;
+        document.getElementById("contLoad").innerText = LoadNewGame;
     }else{
-        $("#loaded").hide();
+        document.getElementById("loaded").hidden = true;
         playGame();
         openDados();
         reproduz();
