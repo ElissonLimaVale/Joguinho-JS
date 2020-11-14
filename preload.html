@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+            font-family: game_over;
+            src: url('fonts/joystix.ttf');
+        }
+            img{
+                width: 30%;
+                height: 50%;
+                position: absolute;
+                top: calc(50% - 35%);
+                left: calc(50% - 16%);
+            }
+            body{
+                background-color: rgba(47, 224, 255, 0.746);
+            } 
+            h1{
+                font-size: 50px;
+                font-family: game_over;
+                color: rgba(12, 189, 65, 0.897);
+                text-shadow: 0px 0px 3px rgba(0,0,0,.5);
+                position: absolute;
+                text-align: center;
+                bottom: 20%;
+                left: calc(50% - 15%);
+                transition: .5s;
+            }
+        </style>
+    </head>
+    <body>
+    <div>
+        <img src="imagens/preloaded.gif">
+        <h1>CARREGANDO...</h1>
+    </div>
+    <script>
+        var cont = 0, texto;
+        function load(){
+            switch(cont){
+                case 0:
+                    texto = "CARREGANDO";
+                    cont = 1;
+                    break;
+                case 1:
+                    texto = "CARREGANDO.";
+                    cont = 2;
+                    break;
+                case 2:
+                    texto = "CARREGANDO..";
+                    cont = 3;
+                    break;
+                case 3:
+                    texto = "CARREGANDO...";
+                    cont = 0;
+                    break;
+            }
+        }
+        setInterval( function(){
+            load();
+            document.querySelector("h1").innerText = texto;
+        }, 300);
+    </script>
+    </body>
+</html>

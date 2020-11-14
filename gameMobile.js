@@ -89,7 +89,7 @@ var Predio = {
     // ZERA OS VALORES DE JOGO PARA REINICIAR OS OBSTACULOS
     reset: function(){
         velocidade = 3;
-        velocidaDificuldade = 4;
+        velocidaDificuldade = 3;
         user.gravidade = .32;
         frames = 0;
         tempoParada = 0;
@@ -137,8 +137,8 @@ function main(){
     ALTURA = (ALTURA / 100) * 70;
     tolerancia = 4.5;
 
-    velocidade = 2;
-    velocidaDificuldade = 4;
+    velocidade = 3;
+    velocidaDificuldade = 3;
     user.gravidade = .32;
     user.forcaDoPulo = 6;
     
@@ -159,13 +159,14 @@ function main(){
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho1.png";
 
-    document.getElementById("click-cell").addEventListener("mousedown",function (){
+    document.getElementById("click-cell").addEventListener("touchstart",function (){
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
             pular();// Chama o método pular quando é Clicado no canvas
         }else if(estadoAtual == estados.jogar && relatorio.open != 1){
             playLoad();
         }
     });
+    
     estadoAtual = estados.jogar;
     user.y = Predio.y - user.altura;
     rodar();
