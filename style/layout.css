@@ -296,7 +296,7 @@
         padding: 0px;
         border-radius: 30px;
         transition: 1s;
-        /* top: -600px; */
+        top: -600px;
     }
     .newRecord h1 {
         text-align: center;
