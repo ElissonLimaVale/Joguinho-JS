@@ -87,14 +87,15 @@ var Predio = {
     },
     // ZERA OS VALORES DE JOGO PARA REINICIAR OS OBSTACULOS
     reset: function(){
-        velocidade = 4.5;
-        velocidaDificuldade = 3.5;
-        user.gravidade = .46;
+        velocidade = 3;
+        velocidaDificuldade = 2.5;
+        user.gravidade = .30;
         frames = 0;
         tempoParada = 0;
         this.score = 0;
         user.y = Predio.y - user.altura;
         Predio.x = 10;
+        user.forcaDoPulo = 6;
     },
 
     // MÉTODO QUE RENDERIZA OS OBSTACULOS
@@ -132,10 +133,9 @@ function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 95;
     ALTURA = (ALTURA / 100) * 70;
-    velocidade = 5;
-    velocidaDificuldade = 3;
-    user.gravidade = .46;
-    celular = true;
+    velocidade = 2;
+    velocidaDificuldade = 2.5;
+    user.gravidade = .30;
     
     // CRIA A TELA - CANVAS
     canvas = document.querySelector("canvas");
