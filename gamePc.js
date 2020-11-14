@@ -34,16 +34,16 @@ obstaculos = {
         });
         switch(velocidaDificuldade){
             case 5:
-                this.tempoInsere = 50;
+                this.tempoInsere = 65;
                 break;
             case 10:
-                this.tempoInsere = 45;
+                this.tempoInsere = 50;
                 break;
             case 15:
-                this.tempoInsere = 30;
+                this.tempoInsere = 40;
                 break;
             case 25:
-                this.tempoInsere = 28;
+                this.tempoInsere = 32;
             default:
                 this.tempoInsere = 28;
         }
