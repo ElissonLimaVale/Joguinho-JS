@@ -41,9 +41,6 @@ user = {
         if(this.y > chao.y - this.altura){
             this.y = chao.y - this.altura;
             this.velocidade = 0;
-            bateuPlay();
-            Over();
-            perdeuPlay();
         }
     },
 
@@ -63,8 +60,6 @@ function Over(){
     imageUser.src = "imagens/user1.png";
     localStorage.setItem("partidas", relatorio.partidas += 1);
     velocidade = 0;
-    user.velocidade = 0;// pausa o bloco do usuario
-    user.gravidade = 0;
     estadoAtual = estados.perdeu;
     if(obstaculos.score > relatorio.maxPontos){
         localStorage.setItem("maxPontos", obstaculos.score);
@@ -109,9 +104,7 @@ function atualiza(){
     if(estadoAtual != estados.jogar){
         //chamando o calculo de gravidade, que vai atualizar a posiçã dele no eixo Y
         user.atualiza();  
-    }
-    
-    if(estadoAtual == estados.jogar){
+    }else{
         obstaculos.reset();
     }
 }
@@ -146,6 +139,8 @@ function newGame(){
     obstaculos._obs = [];
     obstaculos._obs2 = [];
     LoadNewGame = 4;
+    user.velocidade = 0;// pausa o bloco do usuario
+    user.gravidade = 0;
 }
 
 function eventRecord(){
