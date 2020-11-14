@@ -96,6 +96,7 @@ var Predio = {
         user.y = Predio.y - user.altura;
         Predio.x = 10;
         user.forcaDoPulo = 6;
+        imageUser.src = "imagens/user.png";
     },
 
     // MÉTODO QUE RENDERIZA OS OBSTACULOS
@@ -136,6 +137,7 @@ function main(){
     velocidade = 2;
     velocidaDificuldade = 2.5;
     user.gravidade = .30;
+    user.forcaDoPulo = 6;
     
     // CRIA A TELA - CANVAS
     canvas = document.querySelector("canvas");
