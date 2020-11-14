@@ -78,7 +78,7 @@ user = {
         this.y += this.velocidade;
         // O código abaixo faz com que o bloco pare de cair, travando o vaor do eixo y 
         if(this.y > chao.y - this.altura){
-            this.y = chao.y - this.altura + 6;
+            this.y = chao.y - this.altura + tolerancia;
             this.velocidade = 0;
         }
     },
