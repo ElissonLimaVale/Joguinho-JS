@@ -14,7 +14,6 @@ if(localStorage.getItem("partidas") == null){
         localStorage.setItem("somaPontos", 0);
     }
     var relatorio = {
-        open: 0,
         partidas: parseInt(localStorage.getItem("partidas")),
         novoRecord: parseInt(localStorage.getItem("novoRecord")),
         maxPontos: parseInt(localStorage.getItem("maxPontos")),
@@ -26,7 +25,8 @@ if(localStorage.getItem("partidas") == null){
             this.maxPontos = parseInt(localStorage.getItem("maxPontos")),
             this.somaPontos = parseInt(localStorage.getItem("somaPontos"))
         }
-    };
+    },
+    RELATÓRIO = document.getElementById("relInit");
 ALTURA = window.innerHeight; // CAPTURA A ALTURA DA TELA DO USUARIO
 LARGURA = window.innerWidth; //  CAPTURA A LARGURA
     
