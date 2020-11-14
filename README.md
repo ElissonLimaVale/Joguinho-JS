@@ -12,7 +12,13 @@ Joguinho consiste em desviar dos obstaculos clicando no botão esquerdo do mouse
 
 Gestor de proj | Participações | Andameno | Data limite | finalizado em | versão
 --- | --- | --- | --- | --- | ---
-Elisson Vale | 0 | 100% | 07/09/2020 | 01/07/2020 | 2.0
+Elisson Vale | 1 | 100% | 07/09/2020 | 01/07/2020 | 2.0
 
-**Contribua com esse projeto enviando um feed back!** :grinning: 11988352221
+**Contribuições:**
+Contribuinte | Contribuição | Perfil no github
+--- | --- | ---
+Lara Magalhães | Imagens e Gifs Pixlart | ====
+
+**Agora Também para smartphone!**
+**Contribua com esse projeto enviando um feed back!** :grinning: []()
 
