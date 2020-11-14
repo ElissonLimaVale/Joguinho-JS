@@ -8,6 +8,8 @@
             document.getElementById("relat04").innerHTML = "Pontuação Maxima atual: " + relatorio.maxPontos;
             document.getElementById("relat05").innerHTML = "Soma de todos pontos: " + relatorio.somaPontos;
             document.getElementById("relat06").innerHTML = "Sua Media Atual: " + Media.toFixed(2);
+            
+            document.getElementById("gameinit").style = "top: -80vh";
             RELATÓRIO.hidden = false;
             setTimeout(function(){
                 RELATÓRIO.style = "right: 0;";
@@ -16,7 +18,8 @@
             RELATÓRIO.style = "right: -80%;";
             setTimeout(function(){
                 RELATÓRIO.hidden = true;
-            }, 1000);
+            }, 300);
+            document.getElementById("gameinit").style = "top: calc(50% - 18%);";
         }else if(relatorio.partidas <= 5 && estadoAtual == estados.jogar){
             document.getElementById("notific").hidden = false;
             document.getElementById("notific").style = "left: 0%;";

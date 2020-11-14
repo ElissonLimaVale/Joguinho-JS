@@ -32,6 +32,9 @@ chao = {
         contex.fillRect(0, this.y, LARGURA, this.altura);
     }
 },
+nuvem = {
+    
+},
 user = {
     x: 50,
     y: 80,
@@ -126,6 +129,7 @@ function atualiza(){
     }else{
         obstaculos.reset();
     }
+   
 }
 
 function playGame(){
@@ -157,6 +161,9 @@ function newGame(){
     LoadNewGame = 4;
     user.velocidade = 0;// pausa o bloco do usuario
     user.gravidade = 0;
+    setTimeout(function(){
+        document.getElementById("gameinit").hidden = false;
+    }, 300);
 }
 //#endregion
 
@@ -173,6 +180,7 @@ function eventRecord(){
 function playLoad(){
     if(LoadNewGame > 3){
         document.getElementById("notific").style = "left: -100%;";
+        document.getElementById("gameinit").hidden = true;
         fightPlay();
     }
     if(estadoAtual == estados.jogar){

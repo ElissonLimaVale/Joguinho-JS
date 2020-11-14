@@ -191,12 +191,7 @@ function desenha(){
     contex.fillStyle = "#fff";
     contex.font = "20px game_over";
     contex.fillText("RECORD: " + record, LARGURA - 200, 30);
-
-    if(estadoAtual == estados.jogar && LoadNewGame == 4){
-        contex.fillStyle = "#00bc2f";
-        contex.font = "40px game_over";
-        contex.fillText("CLIQUE PARA INICIAR", 200, (ALTURA / 2) - 20);
-    }
+ 
 }
 
 function setRecordMemory(record){

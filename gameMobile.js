@@ -175,15 +175,6 @@ function desenha(){
     contex.fillStyle = "#50Beff";
     contex.fillRect(0, 0, LARGURA, ALTURA);
 
-    // desenhado o score na tela
-    contex.fillStyle = "#fff";
-    contex.font = "14px game_over";
-    contex.fillText("SCORE: " + obstaculos.score,20,20);
-
-    //desenha texto e com o record
-    contex.fillStyle = "#fff";
-    contex.font = "14px game_over";
-    contex.fillText("RECORD: " + record, LARGURA - 140, 20);
     //O código abaixo desenha o chão
     chao.desenha();
 
@@ -193,14 +184,20 @@ function desenha(){
     }
     // O código abaixo desenha o bloco que o jogador vai controlar
     user.desenha();
-     //desenha o prédio com o ninho
-     Predio.desenha();
 
-     if(estadoAtual == estados.jogar && LoadNewGame == 4){
-        contex.fillStyle = "#00bc2f";
-        contex.font = "18px game_over";
-        contex.fillText("CLIQUE PARA INICIAR", 40, (ALTURA / 2) - 20);
-    }
+     // desenhado o score na tela
+     contex.fillStyle = "#fff";
+     contex.font = "14px game_over";
+     contex.fillText("SCORE: " + obstaculos.score,20,20);
+ 
+     //desenha texto e com o record
+     contex.fillStyle = "#fff";
+     contex.font = "14px game_over";
+     contex.fillText("RECORD: " + record, LARGURA - 140, 20);
+     //desenha o prédio com o ninho
+
+    Predio.desenha();
+
 }
 
 function setRecordMemory(record){
