@@ -159,16 +159,16 @@ function main(){
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho1.png";
 
+    document.getElementById("click-cell").addEventListener("click",function (){
+        if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+            pular();// Chama o método pular quando é Clicado no canvas
+        }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+            playLoad();
+        }
+    });
     estadoAtual = estados.jogar;
     user.y = Predio.y - user.altura;
     rodar();
-}
-function PularCell(){
-    if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-        pular();// Chama o método pular quando é Clicado no canvas
-    }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-        playLoad();
-    }
 }
 function desenha(){
     //O código abaixo desenha a tela de jogo
