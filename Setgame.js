@@ -2,7 +2,7 @@
 // DECLARA O OBJETO DE RELATÓRIO E SEUS ATRIBUTOS COM O MÉTODO QUE ATUALIZA O VALOR
 $(document).ready(function(){
     var ALTURA, LARGURA;
-    document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/newRecord.png";
+    document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/morto.gif";
     $("#loaded").hide();
     $("#relInit").hide(300);
 });

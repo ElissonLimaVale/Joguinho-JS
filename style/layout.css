@@ -101,10 +101,11 @@
         100%{color:rgb(28, 131, 156);opacity: 100%;}
     }
     .record {
-        width: 220px;
-        height: 220px;
+        width: 350px;
+        height: 350px;
         position: absolute;
-        margin-left: 20px;
+        left: -50px;
+        top: 70px;
     }
     .relatorio {
         float: right;
@@ -295,7 +296,7 @@
         padding: 0px;
         border-radius: 30px;
         transition: 1s;
-        top: -600px;
+        /* top: -600px; */
     }
     .newRecord h1 {
         text-align: center;
@@ -321,10 +322,11 @@
         100%{color:rgb(28, 131, 156);opacity: 100%;}
     }
     .record {
-        width: 80px;
-        height: 80px;
+        width: 200px;
+        height: 200px;
         position: absolute;
-        margin-left: 2px;
+        top: 90px;
+        left: -30px;
     }
     .relatorio {
         float: right;
