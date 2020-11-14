@@ -63,12 +63,12 @@ obstaculos = {
             obs.x -= velocidade;
             obs2.x -= velocidade;
             // verifica se o bloco do jogador colidiu com o obstaculo
-            if(user.x + user.largura > obs.x && obs.x - obs.largura < user.x + user.largura &&
+            if(user.x + user.largura - 5 >= obs.x && obs.x - obs.largura - 5 <= user.x + user.largura &&
                 obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 bateuPlay();
                 Over();
-            }else if(user.x + user.largura > obs2.x - 2 && user.x < obs2.x + obs2.largura  - 2 &&
+            }else if(user.x + user.largura >= obs2.x - 5 && user.x - 5 <= obs2.x + obs2.largura &&
                 (user.y - user.altura) + 10 <= (chao.y - obs.altura) - hard){
                     // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 bateuPlay();

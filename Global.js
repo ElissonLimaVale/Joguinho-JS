@@ -103,10 +103,14 @@ function atualiza(){
         frames++;
         if(obstaculos.score >= velocidaDificuldade * 2){
             velocidaDificuldade += 5;
-        }
-        //chamando o calculo de gravidade, que vai atualizar a posiçã dele no eixo Y
-        user.atualiza();        
+        }     
+         
     }
+    if(estadoAtual != estados.jogar){
+        //chamando o calculo de gravidade, que vai atualizar a posiçã dele no eixo Y
+        user.atualiza();  
+    }
+    
     if(estadoAtual == estados.jogar){
         obstaculos.reset();
     }
@@ -177,6 +181,8 @@ function loaded(){
 }
 function audioButonPlay(){
     audioButton.play();
+    audioRecord.pause();
+    audioPerdeu.pause();
 }
 function audioPuloPlay(){
     audioPulo.play();
