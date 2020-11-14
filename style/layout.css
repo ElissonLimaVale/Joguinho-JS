@@ -114,7 +114,7 @@
         border-radius: 20px;
         margin-top: 30px;
     }
-    .newRecord h2{
+    #record-h2{
         width: 60%;
         text-align: center;
         font-size: 70px;
@@ -123,8 +123,7 @@
         margin: 10px 20% 10px 20%;
         padding: 20px;
         border: 10px solid rgba(0, 0, 0, 0.829);
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
+        border-radius: 20px;
         background-color: rgb(254, 24, 3);
     }
     
@@ -335,7 +334,7 @@
         border-radius: 20px;
         margin-top: 30px;
     }
-    .newRecord h2{
+    #record-h2{
         width: 50%;
         text-align: center;
         font-size: 22px;

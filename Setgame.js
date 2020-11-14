@@ -34,7 +34,7 @@ if (LARGURA >= 1000 && ALTURA <= 800){
         // ADICIONA O DOCUMENTO DE JOGO PARA COMPUTADOR
         document.getElementById("script-layout").setAttribute('src', 'gamePc.js'); 
     });
-}else if(LARGURA <= 500 && ALTURA >= 500){
+}else if(LARGURA <= 550 && ALTURA >= 500){
     $(document).ready(function(){
         // ADICIONA O DOCUMENTO DE JOGO PARA SMATPHONE
         document.getElementById("script-layout").setAttribute('src', 'gameMobile.js'); 
