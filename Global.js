@@ -3,8 +3,9 @@
 var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 6,dificuldade, velocidaDificuldade = 5,
 estadoAtual, record = 0, hard = 195, LoadNewGame = 4, audioPulo = document.getElementById('click01')
-, audioButton = document.getElementById('click02'), musica = document.getElementById('click03');
-
+, audioButton = document.getElementById('click02'), musica = document.getElementById('click03'),
+audioBateu = document.getElementById("batida"), audioPerdeu = document.getElementById("perdeuSom"),
+audioPonto = document.getElementById("pontuou"), audioRecord = document.getElementById("recordPlay");
 const estados = {
     jogar: 0,
     jogando: 1,
@@ -40,7 +41,9 @@ user = {
         if(this.y > chao.y - this.altura){
             this.y = chao.y - this.altura;
             this.velocidade = 0;
+            bateuPlay();
             Over();
+            perdeuPlay();
         }
     },
 
@@ -57,6 +60,7 @@ user = {
 }
 // REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
+    imageUser.src = "imagens/user1.png";
     localStorage.setItem("partidas", relatorio.partidas += 1);
     velocidade = 0;
     user.velocidade = 0;// pausa o bloco do usuario
@@ -66,11 +70,13 @@ function Over(){
         localStorage.setItem("maxPontos", obstaculos.score);
     }
     if(obstaculos.score > record){
+        recordPlay();
         localStorage.setItem("novoRecord",relatorio.novoRecord += 1);
         setRecordMemory(obstaculos.score);
         record = getRecordMemory();
         eventRecord();
     }else{
+        perdeuPlay();
         gameOver();
     }
     localStorage.setItem("somaPontos",relatorio.somaPontos += obstaculos.score);
@@ -174,6 +180,20 @@ function audioButonPlay(){
 }
 function audioPuloPlay(){
     audioPulo.play();
+}
+function bateuPlay(){
+    audioBateu.play();
+}
+function perdeuPlay(){
+    audioPerdeu.play();
+    musica.pause();
+}
+function pontoPlay(){
+    audioPonto.play();
+}
+function recordPlay(){
+    audioRecord.play();
+    musica.pause();
 }
 function reproduz(){       
     if(estadoAtual == estados.jogando){

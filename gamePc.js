@@ -66,10 +66,12 @@ obstaculos = {
             if(user.x + user.largura > obs.x && obs.x - obs.largura < user.x + user.largura &&
                 obs.x > user.x - user.largura && user.y + user.altura > chao.y - obs.altura){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
+                bateuPlay();
                 Over();
             }else if(user.x + user.largura > obs2.x - 2 && user.x < obs2.x + obs2.largura  - 2 &&
                 (user.y - user.altura) + 10 <= (chao.y - obs.altura) - hard){
                     // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
+                bateuPlay();
                 Over();
             }
             //verificando se o objeto ja passou da tela, para apagá-lo do arry, assim evitando
@@ -80,6 +82,7 @@ obstaculos = {
                 this._obs2.splice(i, 1);
                 tam--; // após apagar o objeto do array, é importante decrementar as variaveis do for
                 i--;  // para assim evitar erro no caso de dois ou mais objetos
+                pontoPlay();
             }
         }
     },
@@ -93,6 +96,7 @@ obstaculos = {
         this.score = 0;
         user.y = 80;
         Predio.x = 10;
+        imageUser.src = "imagens/user.png";
     },
 
     // MÉTODO QUE RENDERIZA OS OBSTACULOS
