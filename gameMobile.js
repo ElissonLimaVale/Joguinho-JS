@@ -288,7 +288,7 @@ function setRecordMemory(record){
     localStorage.setItem("RecordMax", record);
 }
 function getRecordMemory(){
-    var record = localStorage.getItem("RecordMax", obstaculos.score);
+    var record = localStorage.getItem("RecordMax");
     return record;
 }
 main();
