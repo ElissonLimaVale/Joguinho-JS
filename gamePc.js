@@ -239,7 +239,7 @@ function main(){
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
             pular();// Chama o método pular quando é Clicado no canvas
         }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-            playLoad();
+            setTimeout(() => {playLoad();}, 200);
         }
     });
     // CAPTURA TECLAS DIGITADAS E SE A TECLA FOR ESPAÇO EXECUTA A FUNÇÃO PULAR
