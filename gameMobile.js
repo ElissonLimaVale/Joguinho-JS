@@ -45,10 +45,8 @@ var Predio = {
                 break;
             case 25:
                 this.tempoInsere = 65;
-                velocidade += .2;
             case 25:
                 this.tempoInsere = 50;
-                velocidade += .2;
             default:
                 this.tempoInsere = 45;
         }
