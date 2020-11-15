@@ -249,10 +249,10 @@ function main(){
             setTimeout(() => {playLoad();}, 300);
         }
     });
-    
     estadoAtual = estados.jogar;
     user.y = Predio.y - user.altura;
     rodar();
+
 }
 function desenha(){
     //O código abaixo desenha a tela de jogo
