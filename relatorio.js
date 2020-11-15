@@ -11,25 +11,25 @@
             
             document.getElementById("gameinit").style = "top: -80vh";
             RELATÓRIO.hidden = false;
-            setTimeout(function(){
+            setTimeout(() =>{
                 RELATÓRIO.style = "right: 0;";
             }, 100);
         }else if(!RELATÓRIO.hidden || estadoAtual == estados.jogando){
             RELATÓRIO.style = "right: -80%;";
-            setTimeout(function(){
+            setTimeout(() =>{
                 RELATÓRIO.hidden = true;
             }, 300);
             document.getElementById("gameinit").style = "top: calc(50% - 18%);";
         }else if(relatorio.partidas <= 5 && estadoAtual == estados.jogar){
             document.getElementById("notific").hidden = false;
             document.getElementById("gameinit").style = "top: -80vh;";
-            setTimeout(function(){
+            setTimeout(() =>{
                 document.getElementById("notific").style = "left: 0%;";
             }, 300);
-            setTimeout(function(){
+            setTimeout(() =>{
                 document.getElementById("notific").style = "left: -100%;";
                 document.getElementById("gameinit").style = "top: calc(50% - 18%);";
-                setTimeout(function(){
+                setTimeout(() =>{
                     document.getElementById("notific").hidden = true;
                 }, 300);
             }, 4000);

@@ -182,7 +182,7 @@ function newGame(){
     LoadNewGame = 4;
     user.velocidade = 0;// pausa o bloco do usuario
     user.gravidade = 0;
-    setTimeout(function(){
+    setTimeout(() =>{
         document.getElementById("gameinit").hidden = false;
     }, 300);
 }
@@ -209,7 +209,7 @@ function playLoad(){
         loaded();
         if(LoadNewGame > -1){
             clearTimeout(Timeout);
-            Timeout = setTimeout(function(){
+            Timeout = setTimeout(() => {
                 playLoad();
             }, 1000);
         }
@@ -257,7 +257,7 @@ function fightPlay(){
     fight.play();
 }
 function fightPause(){
-    fight != null? pauseClear(fight): 0;
+    fight != null ? pauseClear(fight): 0;
 }
 
 function reproduz(){       
