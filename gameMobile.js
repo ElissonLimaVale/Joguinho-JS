@@ -71,7 +71,7 @@ var Predio = {
                 user.y + user.altura >= chao.y - obs.altura){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 Over();
-            }else if(user.x + user.largura - tolerancia >= obs2.x && user.x - tolerancia <= obs2.x + obs2.largura &&
+            }else if(user.x + user.largura - (tolerancia * 2) >= obs2.x && user.x - (tolerancia * 2) <= obs2.x + obs2.largura &&
                 (user.y - user.altura) + tolerancia <= (chao.y - obs.altura) - hard){
                 // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 Over();

@@ -63,14 +63,14 @@ obstaculos = {
             obs.x -= velocidade;
             obs2.x -= velocidade;
             // verifica se o bloco do jogador colidiu com o obstaculo
-            if(user.x + user.largura - tolerancia  >= obs.x && user.x <= obs.x + obs.largura - tolerancia &&
-               user.y + user.altura >= chao.y - obs.altura){
-
+            if(user.x + user.largura - (tolerancia * 2)  >= obs.x && user.x <= obs.x + obs.largura - (tolerancia * 2) &&
+                user.y + user.altura >= chao.y - obs.altura){
+                // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
                 Over();
             }else if((user.x + user.largura) - tolerancia >= obs2.x && user.x <= obs2.x + obs2.largura &&
-                 (user.y - user.altura) + tolerancia <= (chao.y - obs.altura) - hard){
-                     // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
-                 Over();
+                (user.y - user.altura) + tolerancia <= (chao.y - obs.altura) - hard){
+                // se colidiu altera o estado atual para "perdeu", e chaa a função reset para zerar o jogo
+                Over();
             }
             //verificando se o objeto ja passou da tela, para apagá-lo do arry, assim evitando
             // que ele continue decrementando e isso consuma processamento!
