@@ -1,12 +1,13 @@
+//#region DEFINIÇÃO DE ÍCONE E DISPLAY NONE DE TELAS DE NOTIFICAÇÔES DO USUARIO
+// define o caminho da magem de icone do site
+document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/morto.gif";
+// faz as telas de notificação, relatório e a contagem regressiva sumirem
+document.getElementById("loaded").hidden = true;
+document.getElementById("notific").hidden = true;
+document.getElementById("relInit").hidden = true;
+//#endregion
 
-// DECLARA O OBJETO DE RELATÓRIO E SEUS ATRIBUTOS COM O MÉTODO QUE ATUALIZA O VALOR
-
-    var ALTURA, LARGURA;
-    document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/morto.gif";
-    document.getElementById("loaded").hidden = true;
-    document.getElementById("notific").hidden = true;
-    document.getElementById("relInit").hidden = true;
-
+//#region  DECLARA O OBJETO DE RELATÓRIO E SEUS ATRIBUTOS COM O MÉTODO QUE ATUALIZA O VALOR
 if(localStorage.getItem("partidas") == null){
         localStorage.setItem("partidas", 0);
         localStorage.setItem("novoRecord", 0);
@@ -27,9 +28,14 @@ if(localStorage.getItem("partidas") == null){
         }
     },
     RELATÓRIO = document.getElementById("relInit");
+//#endregion
+
+//#region REDIMECIONAMENTO DA TELA AO CARREGAR SRC DIFERENTE
+var ALTURA, LARGURA;
+
 ALTURA = window.innerHeight; // CAPTURA A ALTURA DA TELA DO USUARIO
 LARGURA = window.innerWidth; //  CAPTURA A LARGURA
-    
+
 if (LARGURA >= 1000 && ALTURA <= 800){
         // ADICIONA O DOCUMENTO DE JOGO PARA COMPUTADOR
         document.getElementById("script-layout").setAttribute('src', 'gamePc.js');
@@ -37,3 +43,4 @@ if (LARGURA >= 1000 && ALTURA <= 800){
         // ADICIONA O DOCUMENTO DE JOGO PARA SMATPHONE
         document.getElementById("script-layout").setAttribute('src', 'gameMobile.js'); 
 }
+//#endregion
