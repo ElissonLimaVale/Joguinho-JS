@@ -2,7 +2,7 @@
 //#region VARIÁVEIS DE JOGO
 var canvas, contex, frames = 0,tempoParada = 0, celular = false, Timeout,
 maxPulos = 4,velocidade = 5,dificuldade, velocidaDificuldade = 5,
-estadoAtual, record = 0, hard = 195, LoadNewGame = 4, tolerancia,
+estadoAtual, record = 0, hard = 195, LoadNewGame = 4, tolerancia, clickEvent,
 
 // variaveis e audio
 audioPulo = document.getElementById('click01'),
@@ -93,6 +93,7 @@ user = {
 //#region OVER =>  REINICIA R REGISTRA DADOS APÓS GAME OVER
 // REGISTRAS OS DADOS DA PARTODA PARA O RELATÓRIO E ZERA ALGUNS VALORES DE PARA REINICAR O JOGO
 function Over(){
+    clickEvent = "click";
     bateuPlay();
     imageUser.src = "imagens/passarinho.png";
     localStorage.setItem("partidas", relatorio.partidas += 1);
@@ -201,6 +202,7 @@ function eventRecord(){
 
 //#region CONTAGEN REGRECIVA DE INICIO
 function playLoad(){
+    clickEvent = "touchstart";
     if(LoadNewGame > 3){
         document.getElementById("notific").style = "left: -100%;";
         document.getElementById("gameinit").hidden = true;
