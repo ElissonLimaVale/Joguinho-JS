@@ -1,3 +1,5 @@
+record = getRecordMemory() != null? getRecordMemory() : 0;
+
 //#region  OBJETOS DE JOGO
 // objeto Predio
 var Predio = {
@@ -206,9 +208,8 @@ nuvem = {
     }
 };
 //#endregion
-if(getRecordMemory() != null){
-    record = getRecordMemory();
-}
+
+//#region MAIN INICIO DE JOGO
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
@@ -250,6 +251,9 @@ function main(){
     estadoAtual = estados.jogar;
     rodar();
 }
+//#endregion
+
+//#region  DESENHA/RENDERIZA ELEMENTOS DE JOGO
 function desenha(){
     //O código abaixo desenha a tela de jogo
     contex.fillStyle = "rgb(0,206,209)";
@@ -281,7 +285,9 @@ function desenha(){
     contex.fillText("RECORD: " + record, LARGURA - 200, 30);
  
 }
+//#endregion
 
+//#region GET/SET RECORD 
 function setRecordMemory(record){
     localStorage.setItem("RecordMax", record);
 }
@@ -289,4 +295,6 @@ function getRecordMemory(){
     var record = localStorage.getItem("RecordMax", obstaculos.score);
     return record;
 }
+//#endregion
+
 main();

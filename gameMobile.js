@@ -1,4 +1,5 @@
 record = getRecordMemory() != null? getRecordMemory() : 0;
+
 //#region OBEJATOS DE JOGO
 // objeto Predio
 var Predio = {
@@ -209,7 +210,8 @@ nuvem = {
     }
 };
 //#endregion
-// INICIA O JOGO NA VERSÃO MOBILE-CELULAR
+
+//#region  INICIA O JOGO NA VERSÃO MOBILE-CELULAR
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 95;
@@ -250,8 +252,10 @@ function main(){
     estadoAtual = estados.jogar;
     user.y = Predio.y - user.altura;
     rodar();
-
 }
+//#endregion
+
+//#region DESENHA/RENDERIZA 
 function desenha(){
     //O código abaixo desenha a tela de jogo
     contex.fillStyle = "rgb(0,206,209)";
@@ -284,6 +288,9 @@ function desenha(){
      //desenha o prédio com o ninho
     Predio.desenha();
 }
+//#endregion
+
+//#region MÉTODOS GET/SET RECORD
 function setRecordMemory(record){
     localStorage.setItem("RecordMax", record);
 }
@@ -291,4 +298,6 @@ function getRecordMemory(){
     var record = localStorage.getItem("RecordMax");
     return record;
 }
+//#endregion
+
 main();

@@ -1,4 +1,4 @@
-
+//#region SPRITE JOGADOR
 function Sprite(x, y, largura, altura){
     this.x = x;
     this.y = y;
@@ -9,7 +9,9 @@ function Sprite(x, y, largura, altura){
     }
 }
 userImage = new Sprite(0,0,50,50);
+//#endregion
 
+//#region SPRITES OBSTACULOS DE BAIXO
 function Sprite02(x, y, largura){
     this.x = x;
     this.y = y;
@@ -30,7 +32,9 @@ obsImage02cel = new Sprite02(50,0,50);
 obsImage03cel = new Sprite02(100,0,50);
 obsImage04cel = new Sprite02(150,0,50);
 obsImage05cel = new Sprite02(200,0,50);
+//#endregion
 
+//#region SPRITES OBSTACULOS DE CIMA
 function Sprite03(x, y, largura){
     this.x = x;
     this.y = y;
@@ -53,8 +57,9 @@ obsImage004cel = new Sprite03(50,300,50);
 obsImage003cel = new Sprite03(100,300,50);
 obsImage002cel = new Sprite03(150,300,50);
 obsImage001cel = new Sprite03(200,300,50);
+//#endregion
 
-
+//#region  SPRITE PRÉDIO COM O NINHO
 function Sprite04(x, y, largura){
     this.x = x;
     this.y = y;
@@ -66,7 +71,9 @@ function Sprite04(x, y, largura){
     }
 }
 obsPredio = new Sprite04(0,340,162);
+//#endregion
 
+//#region SPRITE DAS NUVENS
 function Sprite05(x, y, largura){
     this.x = x;
     this.y = y;
@@ -79,3 +86,4 @@ function Sprite05(x, y, largura){
 nuvem1 = new Sprite05(0,0,320);
 nuvem2 = new Sprite05(320,0,320);
 nuvem3 = new Sprite05(640,0,320);
+//#endregion
