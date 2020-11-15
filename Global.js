@@ -130,9 +130,7 @@ function atualiza(){
         obstaculos.reset();
         nuvem.reset();
     }
-   
 }
-
 function playGame(){
     user.y -= 10;
     if(estadoAtual == estados.jogar){// se o estado estiver como jogar muda o estado para jogando, oque

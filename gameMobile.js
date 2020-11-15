@@ -1,3 +1,4 @@
+record = getRecordMemory() != null? getRecordMemory() : 0;
 //#region OBEJATOS DE JOGO
 // objeto Predio
 var Predio = {
@@ -208,9 +209,6 @@ nuvem = {
     }
 };
 //#endregion
-if(getRecordMemory() != null){
-    record = getRecordMemory();
-} 
 // INICIA O JOGO NA VERSÃO MOBILE-CELULAR
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
@@ -264,6 +262,7 @@ function desenha(){
     nuvemInit.x > -500 ? nuvemInit.desenha(): 0;
 
     if(estadoAtual == estados.jogando || estadoAtual == estados.perdeu){
+        //desenha as nuvens
         nuvem.desenha();
         // Dsenhando e preparando os obstaculos para serem inseridos
         obstaculos.desenha();
@@ -281,12 +280,10 @@ function desenha(){
      contex.fillStyle = "#fff";
      contex.font = "14px game_over";
      contex.fillText("RECORD: " + record, LARGURA - 140, 20);
+
      //desenha o prédio com o ninho
-
     Predio.desenha();
-
 }
-
 function setRecordMemory(record){
     localStorage.setItem("RecordMax", record);
 }
