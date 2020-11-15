@@ -4,9 +4,12 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
 
         <title>Joguinho Bird</title>
-        <link rel="preload" href="preload.html" as="document"/>
+        <link rel="preload" href="style/preloadCss.css" as="style"/>
+        <link rel="preload" href="preload.js" as="script"/>
+
         <link id="icone-game" rel="icon" href="/imagens/user.png" sizes="50x50">
         <link rel="stylesheet" type="text/css" href="style/layout.css"/>
+        <link rel="stylesheet" type="text/css" href="style/preloadCss.css"/>
     </head>
     <body>
         <div id="click-cell"></div>
@@ -42,7 +45,11 @@
             <h2 id="contLoad">3</h2>
         </div>
         
-    
+        <div id="preload">
+            <img id="img-preload" src="imagens/preloaded.gif">
+            <h1 id="h1-preload">CARREGANDO...</h1>
+        </div>
+
     <audio id="click01" src="soungs/click.wav"></audio>
     <audio id="click02" src="soungs/click1.wav"></audio>
     <audio id="click03" src="soungs/Musica.mp3" loop></audio>
@@ -57,5 +64,9 @@
     
     <script id="script-layout"></script>
     <script src="Setgame.js"></script>
+
+
+    <!-- Script de preload -->
+    <script src="preload.js"></script>
     </body>
 </html>
