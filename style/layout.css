@@ -1,4 +1,4 @@
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 900px){
 
     body {
         display: flex;
@@ -45,7 +45,7 @@
         height: 180px;
     }
     .relatorio h1{
-        font-size: 50px;
+        font-size: 40px;
         font-family: game_over;
         color: rgba(255, 44, 44, 0.952);
         text-transform: uppercase;
@@ -119,7 +119,7 @@
     #record-h2{
         width: 60%;
         text-align: center;
-        font-size: 70px;
+        font-size: 50px;
         font-family: game_over;
         color: rgba(0, 0, 0, 0.808);
         margin: 10px 20% 10px 20%;
@@ -229,7 +229,7 @@
 
 /*#################### FORMATA O LAYOUT PARA CELULAR ######################*/
 
-@media screen and (max-width: 1000px) and (orientation: portrait){
+@media screen and (max-width: 900px){
     body {
         display: flex;
         justify-content: center;
@@ -253,35 +253,6 @@
         height: 60vh;
         border-radius: 25px;
         padding: 0px;
-    }
-    .over{
-        width: 80%;
-        height: 38vh;
-        background-color: rgba(39, 100, 15, 0.932);
-        position: absolute;
-        margin: 0px 10% 0px 10%;
-        padding: 0px;
-        border-radius: 20px;
-        transition: 1s;
-        top: -600px;
-    }
-    .gameover{
-        width: 90%;
-        margin: 10px 5% 0px 5%;
-    }
-    .morto{
-        position: absolute;
-        width: 28%;
-        height: 100px;
-    }
-    .relatorio h1{
-        font-size: 23px;
-        font-family: game_over;
-        color: rgba(255, 44, 44, 0.952);
-        text-transform: uppercase;
-        text-shadow: 2px 2px 2px rgb(0,0,0);
-        margin: 0px;
-        margin-left: 30px;
     }
     .overButton {
         font-size: 20px;
@@ -331,12 +302,107 @@
         75%{color:rgb(25, 36, 136);opacity: 100%;}
         100%{color:rgb(28, 131, 156);opacity: 100%;}
     }
-    .record {
-        width: 150px;
-        height: 150px;
+    @media screen and (min-width: 325px){
+        .record {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 60px;
+            left: -30px;
+        }
+        #record-h2{
+            width: 50%;
+            text-align: center;
+            font-size: 22px;
+            font-family: game_over;
+            color: rgba(0, 0, 0, 0.808);
+            margin: 10px 20% 10px 20%;
+            padding: 20px;
+            border: 10px solid rgba(0, 0, 0, 0.829);
+            border-radius: 50px;
+            background-color: rgb(254, 24, 3);
+        }
+        .over{
+            width: 80%;
+            height: 38vh;
+            background-color: rgba(39, 100, 15, 0.932);
+            position: absolute;
+            margin: 0px 10% 0px 10%;
+            padding: 0px;
+            border-radius: 20px;
+            transition: 1s;
+            top: -600px;
+        }
+        .gameover{
+            width: 90%;
+            margin: 10px 5% 0px 5%;
+        }
+        .morto{
+            position: absolute;
+            width: 28%;
+            height: 100px;
+        }
+        .relatorio h1{
+            font-size: 23px;
+            font-family: game_over;
+            color: rgba(255, 44, 44, 0.952);
+            text-transform: uppercase;
+            text-shadow: 2px 2px 2px rgb(0,0,0);
+            margin: 0px;
+            margin-left: 20px;
+            text-align: center;
+        }
+
+    }   
+    @media screen and (max-width: 325px){
+        .record {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 60px;
+            left: -30px;
+        }
+        #record-h2{
+            width: 50%;
+            text-align: center;
+            font-size: 22px;
+            font-family: game_over;
+            color: rgba(0, 0, 0, 0.808);
+            margin: 10px 20% 0px 12%;
+            padding: 20px;
+            border: 10px solid rgba(0, 0, 0, 0.829);
+            border-radius: 50px;
+            background-color: rgb(254, 24, 3);
+        }.over{
+        width: 80%;
+        height: 38vh;
+        background-color: rgba(39, 100, 15, 0.932);
         position: absolute;
-        top: 60px;
-        left: -30px;
+        margin: 0px 10% 0px 10%;
+        padding: 0px;
+        border-radius: 20px;
+        transition: 1s;
+        top: -600px;
+        }
+        .gameover{
+            width: 90%;
+            margin: 10px 5% 0px 5%;
+        }
+        .morto{
+            position: absolute;
+            width: 28%;
+            height: 100px;
+        }
+        .relatorio h1{
+            font-size: 18px;
+            font-family: game_over;
+            color: rgba(255, 44, 44, 0.952);
+            text-transform: uppercase;
+            text-shadow: 2px 2px 2px rgb(0,0,0);
+            margin: 0px;
+            margin-left: 10px;
+            text-align: center;
+        }
     }
     .relatorio {
         float: right;
@@ -345,18 +411,6 @@
         padding: 5px;
         border-radius: 20px;
         margin-top: 30px;
-    }
-    #record-h2{
-        width: 50%;
-        text-align: center;
-        font-size: 22px;
-        font-family: game_over;
-        color: rgba(0, 0, 0, 0.808);
-        margin: 10px 20% 10px 20%;
-        padding: 20px;
-        border: 10px solid rgba(0, 0, 0, 0.829);
-        border-radius: 50px;
-        background-color: rgb(254, 24, 3);
     }
     
     .relatorioDiv {
@@ -453,5 +507,6 @@
         text-shadow: 0px 0px 3px rgba(32, 32, 32, 0.897);
         top: calc(50% - 18%);
         transition: .5s;
+        text-align: center;
     }
 }

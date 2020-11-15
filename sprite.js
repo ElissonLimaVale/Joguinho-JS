@@ -52,11 +52,11 @@ obsImage003 = new Sprite03(168,300,84);
 obsImage002 = new Sprite03(252,300,84);
 obsImage001 = new Sprite03(336,300,84);
 //para celular
-obsImage005cel = new Sprite03(0,300,50);
-obsImage004cel = new Sprite03(50,300,50);
-obsImage003cel = new Sprite03(100,300,50);
-obsImage002cel = new Sprite03(150,300,50);
-obsImage001cel = new Sprite03(200,300,50);
+obsImage005cel = new Sprite03(0,330,50);
+obsImage004cel = new Sprite03(50,330,50);
+obsImage003cel = new Sprite03(100,330,50);
+obsImage002cel = new Sprite03(150,330,50);
+obsImage001cel = new Sprite03(200,330,50);
 //#endregion
 
 //#region  SPRITE PRÉDIO COM O NINHO

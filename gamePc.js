@@ -214,6 +214,10 @@ function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 80;
     ALTURA = (ALTURA / 100) * 75;
+    if(ALTURA > 550){
+        LARGURA = (LARGURA / 100) * 80;
+        ALTURA = (ALTURA / 100) * 65;
+    }
     tolerancia = 4;
     // criando a tela
     canvas = document.querySelector("canvas");

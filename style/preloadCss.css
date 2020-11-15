@@ -1,5 +1,5 @@
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 900px){
     @font-face {
         font-family: game_over;
         src: url('../fonts/joystix.ttf');
@@ -37,7 +37,7 @@
 
 
 
-@media screen and (max-width: 1000px) and (orientation: portrait){
+@media screen and (max-width: 900px) and (min-width: 325px){
     @font-face {
         font-family: game_over;
         src: url('../fonts/joystix.ttf');
@@ -45,9 +45,56 @@
     #img-preload{
         width: 200px;
         height: 200px;
+        margin: 0px;
         position: absolute;
         top: calc(50% - 35%);
-        left: calc(50% - 30%);
+        left: calc(50% - 110px);
+    }
+    #preload{
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        margin: 0px;
+        background-color: rgb(47, 224, 255);
+    } 
+    @media screen and (min-width: 500px){
+        #h1-preload{
+            font-size: 20px;
+            font-family: game_over;
+            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 3px rgba(0,0,0,.5);
+            position: absolute;
+            text-align: center;
+            top: 60%;
+            left: calc(50% - 14%);
+            transition: .5s;
+        }
+    }@media screen and (max-width: 500px){
+        #h1-preload{
+            font-size: 20px;
+            font-family: game_over;
+            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 3px rgba(0,0,0,.5);
+            position: absolute;
+            text-align: center;
+            top: 60%;
+            left: calc(50% - 20%);
+            transition: .5s;
+        }
+    }
+}
+@media screen and (max-width: 325px){
+    @font-face {
+        font-family: game_over;
+        src: url('../fonts/joystix.ttf');
+    }
+    #img-preload{
+        width: 200px;
+        height: 200px;
+        margin: 0px;
+        position: absolute;
+        top: calc(50% - 35%);
+        left: calc(50% - 110px);
     }
     #preload{
         position: absolute;
@@ -64,7 +111,7 @@
         position: absolute;
         text-align: center;
         top: 50%;
-        left: calc(50% - 25%);
+        left: calc(50% - 29%);
         transition: .5s;
     }
 }

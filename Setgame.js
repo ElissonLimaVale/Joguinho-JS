@@ -36,10 +36,10 @@ var ALTURA, LARGURA;
 ALTURA = window.innerHeight; // CAPTURA A ALTURA DA TELA DO USUARIO
 LARGURA = window.innerWidth; //  CAPTURA A LARGURA
 
-if (LARGURA >= 1000 && ALTURA <= 800){
+if (LARGURA > 900 ){
         // ADICIONA O DOCUMENTO DE JOGO PARA COMPUTADOR
         document.getElementById("script-layout").setAttribute('src', 'gamePc.js');
-}else if(LARGURA <= 550 && ALTURA >= 500){
+}else if(LARGURA < 900 ){
         // ADICIONA O DOCUMENTO DE JOGO PARA SMATPHONE
         document.getElementById("script-layout").setAttribute('src', 'gameMobile.js'); 
 }
