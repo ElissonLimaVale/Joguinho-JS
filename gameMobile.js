@@ -38,15 +38,15 @@ var Predio = {
                 this.tempoInsere = 110;
                 break;
             case 10:
-                this.tempoInsere = 80;
-                break;
-            case 15:
                 this.tempoInsere = 75;
                 break;
+            case 15:
+                this.tempoInsere = 65;
+                break;
             case 25:
-                this.tempoInsere = 70;
+                this.tempoInsere = 55;
             default:
-                this.tempoInsere = 60;
+                this.tempoInsere = 45;
         }
         
     },
