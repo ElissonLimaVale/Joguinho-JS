@@ -252,7 +252,7 @@ function main(){
 }
 function desenha(){
     //O código abaixo desenha a tela de jogo
-    contex.fillStyle = "rgb(32,178,170)";
+    contex.fillStyle = "rgb(0,206,209)";
     contex.fillRect(0, 0, LARGURA, ALTURA);
     //O código abaixo desenha o chão
     chao.desenha();
