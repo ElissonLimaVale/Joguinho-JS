@@ -1,4 +1,4 @@
-
+//#region  OBJETOS DE JOGO
 // objeto Predio
 var Predio = {
     x: 0,
@@ -10,6 +10,18 @@ var Predio = {
     },
     atualiza: function(){
         this.x -= velocidade;
+    }
+},
+nuvemInit = {
+    x: 230,
+    y: 112,
+    desenha: function(){
+        if(this.x >= -500){
+            nuvem1.desenha( this.x - 4,this.y,340);
+        }
+    },
+    atualiza: function(){
+        this.x -= velocidade - 2;
     }
 },
 obstaculos = {
@@ -44,8 +56,10 @@ obstaculos = {
                 break;
             case 25:
                 this.tempoInsere = 32;
+                break;
             default:
                 this.tempoInsere = 28;
+                break;
         }
     },
     // a fução a tualizar o obstaculo se baseia em decrementar o eixo X do objeto para
@@ -123,7 +137,75 @@ obstaculos = {
             }
         }
     }
+},
+nuvem = {
+    _nuv: [],
+    tempoInsere:  0,
+    options: ["1", "2", "3"],
+    insere: function(){
+        this._nuv.push({ //inserindo os obstaculos no array "_nuv"
+            x: LARGURA + Math.floor(120 * Math.random()),
+            y: Math.floor(180 * Math.random()),
+            largura: 320,
+            altura: 100, 
+            option: this.options[Math.floor(3 * Math.random() + 1)]
+        });
+        switch(velocidaDificuldade){
+            case 5:
+                this.tempoInsere = 210;
+                break;
+            case 10:
+                this.tempoInsere = 180;
+                break;
+            case 15:
+                this.tempoInsere = 160;
+                break;
+            case 25:
+                this.tempoInsere = 120;
+                break
+            default:
+                this.tempoInsere = 120;
+                break
+        }
+    },
+    atualiza: function(){
+        this.tempoInsere <= 0 ? this.insere(): this.tempoInsere--;
+          
+        for(var i = 0, tam = this._nuv.length; i < tam; i++){
+            var nuv = this._nuv[i];
+            nuv.x -= velocidade - 2;
+            if(nuv.x <= -nuv.largura){
+                this._nuv.splice(i, 1);
+                tam--; // após apagar o objeto do array, é importante decrementar as variaveis do for
+                i--;  // para assim evitar erro no caso de dois ou mais objeto
+            }
+        }
+    },
+    desenha: function(){
+        for(var i = 0, tam = this._nuv.length; i < tam; i++){
+            var nuv = this._nuv[i];
+            switch(nuv.option){
+                case "1":
+                    nuvem1.desenha(nuv.x,nuv.y,nuv.altura);
+                    break;
+                case "2":
+                    nuvem2.desenha(nuv.x,nuv.y,nuv.altura);
+                    break;
+                case "3":
+                    nuvem3.desenha(nuv.x,nuv.y,nuv.altura);
+                    break;
+                default:
+                    nuvem1.desenha(nuv.x,nuv.y,nuv.altura);
+            }
+            
+        }
+    },
+    reset: function(){
+        this._nuv = [];
+        nuvemInit.x = 230;
+    }
 };
+//#endregion
 if(getRecordMemory() != null){
     record = getRecordMemory();
 }
@@ -146,6 +228,9 @@ function main(){
     obsImageCima.src="imagens/obsTodosCimaPc.png";
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho.png";
+    nuvemImage = new Image();
+    nuvemImage.src = "imagens/_nuv.png";
+
     contex = canvas.getContext("2d");
 
     // PULA OU INICIA O JOGO
@@ -167,21 +252,24 @@ function main(){
 }
 function desenha(){
     //O código abaixo desenha a tela de jogo
-    contex.fillStyle = "#50Beff";
+    contex.fillStyle = "rgb(32,178,170)";
     contex.fillRect(0, 0, LARGURA, ALTURA);
-
-
     //O código abaixo desenha o chão
     chao.desenha();
+    
+    //desenha a primeira nuvem que aparece
+    nuvemInit.x > -500 ? nuvemInit.desenha(): 0;
 
     if(estadoAtual == estados.jogando || estadoAtual == estados.perdeu){
+        nuvem.desenha();
         // Dsenhando e preparando os obstaculos para serem inseridos
         obstaculos.desenha();
     }
     // O código abaixo desenha o bloco que o jogador vai controlar
     user.desenha();
     //desenha o prédio com o ninho
-    Predio.desenha();
+    Predio.x > -500 ? Predio.desenha(): 0;
+    
     // desenhado o score na tela
     contex.fillStyle = "#fff";
     contex.font = "20px game_over";

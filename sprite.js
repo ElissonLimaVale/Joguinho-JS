@@ -66,3 +66,16 @@ function Sprite04(x, y, largura){
     }
 }
 obsPredio = new Sprite04(0,340,162);
+
+function Sprite05(x, y, largura){
+    this.x = x;
+    this.y = y;
+    this.largura = largura;
+    this.desenha = function(xCanvas, yCanvas,obsAltura){
+    
+        contex.drawImage(nuvemImage,this.x,this.y,this.largura,obsAltura,xCanvas, yCanvas,this.largura,obsAltura);
+    }
+}
+nuvem1 = new Sprite05(0,0,320);
+nuvem2 = new Sprite05(320,0,320);
+nuvem3 = new Sprite05(640,0,320);

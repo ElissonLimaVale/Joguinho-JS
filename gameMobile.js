@@ -1,4 +1,4 @@
-
+//#region OBEJATOS DE JOGO
 // objeto Predio
 var Predio = {
     x: 0,
@@ -10,6 +10,17 @@ var Predio = {
     },
     atualiza: function(){
         this.x -= velocidade;
+    }
+},nuvemInit = {
+    x: 180,
+    y: 80,
+    desenha: function(){
+        if(this.x >= -500){
+            nuvem1.desenha( this.x - 4,this.y,340);
+        }
+    },
+    atualiza: function(){
+        this.x -= velocidade - 2;
     }
 },
  obstaculos = {
@@ -128,7 +139,75 @@ var Predio = {
             }
         }
     }
+},
+nuvem = {
+    _nuv: [],
+    tempoInsere:  0,
+    options: ["1", "2", "3"],
+    insere: function(){
+        this._nuv.push({ //inserindo os obstaculos no array "_nuv"
+            x: LARGURA + Math.floor(120 * Math.random()),
+            y: Math.floor(180 * Math.random()),
+            largura: 320,
+            altura: 100, 
+            option: this.options[Math.floor(3 * Math.random() + 1)]
+        });
+        switch(velocidaDificuldade){
+            case 5:
+                this.tempoInsere = 400;
+                break;
+            case 10:
+                this.tempoInsere = 350;
+                break;
+            case 15:
+                this.tempoInsere = 300;
+                break;
+            case 25:
+                this.tempoInsere = 250;
+                break
+            default:
+                this.tempoInsere = 200;
+                break
+        }
+    },
+    atualiza: function(){
+        this.tempoInsere <= 0 ? this.insere(): this.tempoInsere--;
+          
+        for(var i = 0, tam = this._nuv.length; i < tam; i++){
+            var nuv = this._nuv[i];
+            nuv.x -= velocidade - 2;
+            if(nuv.x <= -nuv.largura){
+                this._nuv.splice(i, 1);
+                tam--; // após apagar o objeto do array, é importante decrementar as variaveis do for
+                i--;  // para assim evitar erro no caso de dois ou mais objeto
+            }
+        }
+    },
+    desenha: function(){
+        for(var i = 0, tam = this._nuv.length; i < tam; i++){
+            var nuv = this._nuv[i];
+            switch(nuv.option){
+                case "1":
+                    nuvem1.desenha(nuv.x,nuv.y,nuv.altura);
+                    break;
+                case "2":
+                    nuvem2.desenha(nuv.x,nuv.y,nuv.altura);
+                    break;
+                case "3":
+                    nuvem3.desenha(nuv.x,nuv.y,nuv.altura);
+                    break;
+                default:
+                    nuvem1.desenha(nuv.x,nuv.y,nuv.altura);
+            }
+            
+        }
+    },
+    reset: function(){
+        this._nuv = [];
+        nuvemInit.x = 180;
+    }
 };
+//#endregion
 if(getRecordMemory() != null){
     record = getRecordMemory();
 } 
@@ -160,6 +239,8 @@ function main(){
     contex = canvas.getContext("2d");
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho1.png";
+    nuvemImage = new Image();
+    nuvemImage.src = "imagens/_nuv.png";
 
     document.getElementById("click-cell").addEventListener("touchstart",() => {
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
@@ -175,19 +256,22 @@ function main(){
 }
 function desenha(){
     //O código abaixo desenha a tela de jogo
-    contex.fillStyle = "#50Beff";
+    contex.fillStyle = "rgb(0,206,209)";
     contex.fillRect(0, 0, LARGURA, ALTURA);
-
     //O código abaixo desenha o chão
     chao.desenha();
+    //desenha a primeira nuvem que aparece
+    nuvemInit.x > -500 ? nuvemInit.desenha(): 0;
 
     if(estadoAtual == estados.jogando || estadoAtual == estados.perdeu){
+        nuvem.desenha();
         // Dsenhando e preparando os obstaculos para serem inseridos
         obstaculos.desenha();
     }
     // O código abaixo desenha o bloco que o jogador vai controlar
     user.desenha();
-
+    //desenha o Predio com o nunho
+    Predio.x > -500 ? Predio.desenha(): 0;
      // desenhado o score na tela
      contex.fillStyle = "#fff";
      contex.font = "14px game_over";

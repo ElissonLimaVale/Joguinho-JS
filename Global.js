@@ -9,7 +9,6 @@ audioPulo = document.getElementById('click01'),
 audioButton = document.getElementById('click02'),
 audioBateu = document.getElementById("batida"),
 audioPonto = document.getElementById("pontuou"), 
-fight = document.getElementById("321"),
 musica = document.getElementById('click03'),
 audioRecord = document.getElementById("recordPlay");
 //#endregion
@@ -30,30 +29,6 @@ chao = {
         this.y = ALTURA - 50;
         contex.fillStyle = this.cor;
         contex.fillRect(0, this.y, LARGURA, this.altura);
-    }
-},
-nuvem = {
-    _nuv: [],
-    _nuv2: [],
-    _nuv3: [],
-    tempoInsere:  0,
-    score: 0,
-    atualiza: function(){
-
-    },
-    insere: function(){
-        this._nuv.push({ //inserindo os obstaculos no array "_obs"
-            x: LARGURA,
-            y: 40 + Math.floor(40 * Math.random()),
-            largura: 80,
-            altura: 40, 
-        },);
-    },
-    desenha: function(){
-        
-    },
-    reset: function(){
-        
     }
 },
 user = {
@@ -137,7 +112,9 @@ function atualiza(){
         //chamando o calculo que decrementa os obstaculos no eixo X fazendo com que eles
         //se movam para a esquerda, variando a velocidade atravéz da decrementação.
         obstaculos.atualiza();
-        Predio.atualiza();
+        nuvemInit.x > -500? nuvemInit.atualiza(): 0;
+        Predio.x > -500? Predio.atualiza(): 0;
+        nuvem.atualiza();
         frames++;
         if(obstaculos.score >= velocidaDificuldade * 2){
             console.log(velocidaDificuldade);
@@ -151,6 +128,7 @@ function atualiza(){
         user.atualiza();  
     }else{
         obstaculos.reset();
+        nuvem.reset();
     }
    
 }
@@ -204,7 +182,6 @@ function playLoad(){
     if(LoadNewGame > 3){
         document.getElementById("notific").style = "left: -100%;";
         document.getElementById("gameinit").hidden = true;
-        fightPlay();
     }
     if(estadoAtual == estados.jogar){
         LoadNewGame--;
@@ -227,7 +204,6 @@ function loaded(){
         playGame();
         openDados();
         reproduz();
-        fightPause();
     }
 }
 //#endregion
@@ -254,12 +230,6 @@ function pontoPlay(){
 function recordPlay(){
     audioRecord.play();
     pauseClear(musica);
-}
-function fightPlay(){
-    fight.play();
-}
-function fightPause(){
-    fight != null ? pauseClear(fight): 0;
 }
 
 function reproduz(){       
