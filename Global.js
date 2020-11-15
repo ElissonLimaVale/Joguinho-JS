@@ -202,9 +202,7 @@ function playLoad(){
     if(LoadNewGame > 3){
         document.getElementById("notific").style = "left: -100%;";
         document.getElementById("gameinit").hidden = true;
-        setTimeout(() => {
-            fightPlay();
-        }, 300);
+        fightPlay();
     }
     if(estadoAtual == estados.jogar){
         LoadNewGame--;
@@ -218,7 +216,7 @@ function playLoad(){
     }
 }
 function loaded(){
-    LoadNewGame < 0 ? 0 : setTimeout(() => {audioButonPlay();}, 300);
+    LoadNewGame < 0 ? 0 : audioButonPlay();
     if(LoadNewGame >= 0){
         document.getElementById("loaded").hidden = false;
         document.getElementById("contLoad").innerText = LoadNewGame;

@@ -163,7 +163,7 @@ function main(){
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
             pular();// Chama o método pular quando é Clicado no canvas
         }else if(estadoAtual == estados.jogar && relatorio.open != 1){
-            playLoad();
+            setTimeout(() => {playLoad();}, 300);
         }
     });
     
