@@ -141,6 +141,7 @@ function atualiza(){
         frames++;
         if(obstaculos.score >= velocidaDificuldade * 2){
             velocidaDificuldade += 5;
+            velocidade += 0.3;
         }     
          
     }
