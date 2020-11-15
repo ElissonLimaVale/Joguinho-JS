@@ -43,11 +43,11 @@
         src: url('../fonts/joystix.ttf');
     }
     #img-preload{
-        width: 48%;
-        height: 30%;
+        width: 200px;
+        height: 200px;
         position: absolute;
         top: calc(50% - 35%);
-        left: calc(50% - 25%);
+        left: calc(50% - 30%);
     }
     #preload{
         position: absolute;
