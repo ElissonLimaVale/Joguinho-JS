@@ -238,7 +238,7 @@ function main(){
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho1.png";
     nuvemImage = new Image();
-    nuvemImage.src = "imagens/_nuv.png";
+    nuvemImage.src = "imagens/nuvemGame.png";
 
     document.getElementById("click-cell").addEventListener("touchstart",() => {
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){

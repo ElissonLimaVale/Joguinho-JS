@@ -229,7 +229,7 @@ function main(){
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho.png";
     nuvemImage = new Image();
-    nuvemImage.src = "imagens/_nuv.png";
+    nuvemImage.src = "imagens/nuvemGame.png";
 
     contex = canvas.getContext("2d");
 
