@@ -35,18 +35,20 @@ var Predio = {
         });
         switch(velocidaDificuldade){
             case 5:
-                this.tempoInsere = 110;
+                this.tempoInsere = 120;
                 break;
             case 10:
                 this.tempoInsere = 75;
                 break;
             case 15:
-                this.tempoInsere = 65;
+                this.tempoInsere = 55;
                 break;
             case 25:
-                this.tempoInsere = 55;
-            default:
                 this.tempoInsere = 45;
+            case 25:
+                this.tempoInsere = 35;
+            default:
+                this.tempoInsere = 120;
         }
         
     },
