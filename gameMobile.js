@@ -143,7 +143,6 @@ function main(){
     velocidaDificuldade = 5;
     user.gravidade = .32;
     user.forcaDoPulo = 6;
-    clickEvent = "click";
     
     // CRIA A TELA - CANVAS
     canvas = document.querySelector("canvas");
@@ -162,7 +161,7 @@ function main(){
     obsPredioNinho = new Image();
     obsPredioNinho.src="imagens/prediocomninho1.png";
 
-    document.getElementById("click-cell").addEventListener(clickEvent,() => {
+    document.getElementById("click-cell").addEventListener("touchstart",() => {
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
             pular();// Chama o método pular quando é Clicado no canvas
         }else if(estadoAtual == estados.jogar && relatorio.open != 1){
