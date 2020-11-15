@@ -35,20 +35,22 @@ var Predio = {
         });
         switch(velocidaDificuldade){
             case 5:
-                this.tempoInsere = 120;
+                this.tempoInsere = 80;
                 break;
             case 10:
                 this.tempoInsere = 75;
                 break;
             case 15:
-                this.tempoInsere = 55;
+                this.tempoInsere = 70;
                 break;
             case 25:
-                this.tempoInsere = 45;
+                this.tempoInsere = 65;
+                velocidade += .2;
             case 25:
-                this.tempoInsere = 35;
+                this.tempoInsere = 50;
+                velocidade += .2;
             default:
-                this.tempoInsere = 120;
+                this.tempoInsere = 45;
         }
         
     },
@@ -91,7 +93,7 @@ var Predio = {
     // ZERA OS VALORES DE JOGO PARA REINICIAR OS OBSTACULOS
     reset: function(){
         velocidade = 3;
-        velocidaDificuldade = 2;
+        velocidaDificuldade = 5;
         user.gravidade = .32;
         frames = 0;
         tempoParada = 0;
@@ -140,7 +142,7 @@ function main(){
     tolerancia = 4.5;
 
     velocidade = 3;
-    velocidaDificuldade = 2;
+    velocidaDificuldade = 5;
     user.gravidade = .32;
     user.forcaDoPulo = 6;
     

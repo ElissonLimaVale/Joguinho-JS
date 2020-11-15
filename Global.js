@@ -140,8 +140,9 @@ function atualiza(){
         Predio.atualiza();
         frames++;
         if(obstaculos.score >= velocidaDificuldade * 2){
+            console.log(velocidaDificuldade);
             velocidaDificuldade += 5;
-            velocidade += 0.3;
+            velocidade += 0.2;
         }     
          
     }
