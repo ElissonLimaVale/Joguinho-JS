@@ -215,13 +215,10 @@ nuvem = {
 function main(){
     //VALORES DE DIMENÇÃ DA TELA VELOCIDADE E LOGICA DE JOGO PARA MOBILE
     LARGURA = (LARGURA / 100) * 95;
-
+    ALTURA = (ALTURA / 100) * 70;
     if(ALTURA > 750){
+        LARGURA = (LARGURA / 100) * 80;
         ALTURA = (ALTURA / 100) * 60;
-    }else if(ALTURA < 600){
-        ALTURA = (ALTURA / 100) * 80;
-    }else{
-        ALTURA = (ALTURA / 100) * 70;
     }
 
     tolerancia = 4.5;
