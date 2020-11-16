@@ -218,10 +218,8 @@ function main(){
 
     if(ALTURA > 750){
         ALTURA = (ALTURA / 100) * 60;
-    }else if(ALTURA < 600 || ALTURA > 520){
+    }else if(ALTURA < 600){
         ALTURA = (ALTURA / 100) * 80;
-    }else if(ALTURA < 500){
-        ALTURA = (ALTURA / 100) * 90;
     }else{
         ALTURA = (ALTURA / 100) * 70;
     }
