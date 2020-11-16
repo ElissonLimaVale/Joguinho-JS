@@ -250,7 +250,7 @@ function main(){
     document.getElementById("click-cell").addEventListener("touchstart",() => {
         if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
             pular();// Chama o método pular quando é Clicado no canvas
-        }else if(estadoAtual == estados.jogar && relatorio.open != 1){
+        }else if(estadoAtual == estados.jogar && RELATÓRIO.hidden){
             setTimeout(() => {playLoad();}, 300);
         }
     });
