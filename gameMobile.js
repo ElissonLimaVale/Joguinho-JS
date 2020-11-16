@@ -247,13 +247,23 @@ function main(){
     nuvemImage = new Image();
     nuvemImage.src = "imagens/nuvemGame.png";
 
-    document.getElementById("click-cell").addEventListener("touchstart",() => {
-        if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
-            pular();// Chama o método pular quando é Clicado no canvas
-        }else if(estadoAtual == estados.jogar && RELATÓRIO.hidden){
-            setTimeout(() => {playLoad();}, 300);
-        }
-    });
+    if(detectar_mobile()){
+        document.getElementById("click-cell").addEventListener("touchstart",() => {
+            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+                pular();// Chama o método pular quando é Clicado no canvas
+            }else if(estadoAtual == estados.jogar && RELATÓRIO.hidden){
+                setTimeout(() => {playLoad();}, 300);
+            }
+        });
+    }else{
+        document.getElementById("click-cell").addEventListener("mousedown",() => {
+            if(estadoAtual != estados.jogar && estadoAtual != estados.perdeu){
+                pular();// Chama o método pular quando é Clicado no canvas
+            }else if(estadoAtual == estados.jogar && RELATÓRIO.hidden){
+                setTimeout(() => {playLoad();}, 300);
+            }
+        });
+    }
     estadoAtual = estados.jogar;
     user.y = Predio.y - user.altura;
     rodar();
@@ -305,4 +315,21 @@ function getRecordMemory(){
 }
 //#endregion
 
+//#region VERIFICA SE É CELULAR OU PC
+function detectar_mobile() { 
+    if( navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)
+    ){
+       return true;
+     }
+    else {
+       return false;
+     }
+   }
+//#endregion
 main();
