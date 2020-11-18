@@ -5,8 +5,9 @@ Joguinho consiste em desviar dos obstaculos clicando no botão esquerdo do mouse
 
 - [x] Criar a base funcional **MVP**.
 - [x] Incluir imagens e aprimorar a aparência.
-- [x] Emplementar um relatório com dados do game.
-- [x] Integrar a um projeto já hospedado.
+- [x] Implementar um relatório com dados do game.
+- [x] Implementar layout reposivo.
+- [ ] Integrar a um projeto já hospedado.
 
   **Andamento:**
 
