@@ -48,19 +48,19 @@ obstaculos = {
         });
         switch(velocidaDificuldade){
             case 5:
-                this.tempoInsere = 65;
+                this.tempoInsere = 110;
                 break;
             case 10:
-                this.tempoInsere = 50;
+                this.tempoInsere = 90;
                 break;
             case 15:
-                this.tempoInsere = 40;
+                this.tempoInsere = 70;
                 break;
             case 25:
-                this.tempoInsere = 32;
+                this.tempoInsere = 60;
                 break;
             default:
-                this.tempoInsere = 28;
+                this.tempoInsere = 110;
                 break;
         }
     },
@@ -102,9 +102,9 @@ obstaculos = {
     },
     // ZERA OS VALORES DE JOGO PARA REINICIAR OS OBSTACULOS
     reset: function(){
-        velocidade = 5;
+        velocidade = 3.5;
         velocidaDificuldade = 5;
-        user.gravidade = .45;
+        user.gravidade = .28;
         frames = 0;
         tempoParada = 0;
         this.score = 0;
@@ -154,16 +154,16 @@ nuvem = {
         });
         switch(velocidaDificuldade){
             case 5:
-                this.tempoInsere = 210;
+                this.tempoInsere = 400;
                 break;
             case 10:
-                this.tempoInsere = 180;
+                this.tempoInsere = 320;
                 break;
             case 15:
-                this.tempoInsere = 160;
+                this.tempoInsere = 250;
                 break;
             case 25:
-                this.tempoInsere = 120;
+                this.tempoInsere = 180;
                 break
             default:
                 this.tempoInsere = 120;
@@ -218,7 +218,13 @@ function main(){
         LARGURA = (LARGURA / 100) * 80;
         ALTURA = (ALTURA / 100) * 65;
     }
+    //VARIAVEIS DE JOGO
     tolerancia = 4;
+    velocidade = 3;
+    velocidaDificuldade = 5;
+    user.gravidade = .32;
+    user.forcaDoPulo = 6;
+
     // criando a tela
     canvas = document.querySelector("canvas");
     canvas.width = LARGURA;
