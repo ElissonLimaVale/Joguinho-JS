@@ -36,4 +36,9 @@ var cont = 0, texto;
         }, 1800);
         
         
-        
+        // document.getElementById("Global").setAttribute('src', 'Global.js'); 
+        // document.getElementById("Sprites").setAttribute('src', 'sprite.js'); 
+        // document.getElementById("SetGame").setAttribute('src', 'Setgame.js'); 
+
+        // document.getElementById("RelatScipt").setAttribute('src', 'relatorio.js'); 
+        //document.getElementById("SetGame").setAttribute('src', 'Setgame.js'); 
