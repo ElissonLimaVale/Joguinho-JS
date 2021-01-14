@@ -1,7 +1,7 @@
 # Joguinho-JS
 ---
 Joguinho consiste em desviar dos obstaculos clicando no botão esquerdo do mouse ou na tecla de espaço.
-### [Clique aqui](https://elissonlimavale.github.io/Joguinho-Bird-JS/jogo.html) para jogar.
+### [Clique aqui](https://elissonlimavale.github.io/Joguinho-Bird-JS/) para jogar.
 
 - [x] Criar a base funcional **MVP**.
 - [x] Incluir imagens e aprimorar a aparência.
