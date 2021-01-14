@@ -332,4 +332,22 @@ function detectar_mobile() {
      }
    }
 //#endregion
+
+//#region Controle de width para troca de script de renderização do jogo
+document.body.onresize = () => {
+    if(window.innerWidth > 750){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+    if(window.innerWidth > 850){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+    if(window.innerWidth > 950){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+    if(window.innerWidth > 1050){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+}
+//#endregion
+
 main();

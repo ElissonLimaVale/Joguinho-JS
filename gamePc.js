@@ -293,7 +293,6 @@ function desenha(){
     contex.fillStyle = "#fff";
     contex.font = "20px game_over";
     contex.fillText("RECORD: " + record, LARGURA - 200, 30);
- 
 }
 //#endregion
 
@@ -304,6 +303,23 @@ function setRecordMemory(record){
 function getRecordMemory(){
     var record = localStorage.getItem("RecordMax");
     return record;
+}
+//#endregion
+
+//#region Controle de width para troca de script de renderização do jogo
+document.body.onresize = () => {
+    if(window.innerWidth < 750){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+    if(window.innerWidth < 850){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+    if(window.innerWidth < 950){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
+    if(window.innerWidth < 1050){
+        window.location.href = window.location.href;// atualiza a página para trocar a script de layoute game
+    }
 }
 //#endregion
 

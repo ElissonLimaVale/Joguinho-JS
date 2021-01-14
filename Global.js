@@ -207,6 +207,7 @@ function loaded(){
 //#endregion
 
 //#region FUNÇÕES DE AUDIO DO JOGO
+
 function audioButonPlay(){
     audioButton.play();
     pauseClear(document.getElementById("perdeuSom"));
