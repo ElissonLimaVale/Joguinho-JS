@@ -1,6 +1,6 @@
 //#region DEFINIÇÃO DE ÍCONE E DISPLAY NONE DE TELAS DE NOTIFICAÇÔES DO USUARIO
 // define o caminho da magem de icone do site
-document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/morto.gif";
+//document.getElementById("icone-game").href = window.location.href.substring(0,window.location.href.length - 9) + "imagens/morto.gif";
 // faz as telas de notificação, relatório e a contagem regressiva sumirem
 document.getElementById("loaded").hidden = true;
 document.getElementById("notific").hidden = true;
